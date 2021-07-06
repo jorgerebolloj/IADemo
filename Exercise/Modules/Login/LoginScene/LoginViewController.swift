@@ -72,6 +72,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         userTriesRequestLogin()
     }
     
+    var loadingViewController: LoadingViewController?
+    
     fileprivate func setUI() {
         loginButton.setTitle("loginButtonTitle".localized, for: .normal)
         usernameTextField.placeholder = "usernamePlaceholderText".localized
@@ -80,7 +82,24 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     // MARK: User interaction
     
+    private func presentLoader() {
+        loadingViewController = LoadingViewController()
+        loadingViewController!.modalPresentationStyle = .overCurrentContext
+        loadingViewController!.modalTransitionStyle = .crossDissolve
+        present(loadingViewController!, animated: true, completion: nil)
+    }
+    
+    private func dismissLoader(withAlert: Bool, _ viewModel: Login.Auth.ViewModel?) {
+        loadingViewController?.dismiss(animated: true, completion: {
+            if withAlert {
+                guard let viewModel = viewModel else { return }
+                self.alertCall(viewModel: viewModel)
+            }
+        })
+    }
+    
     func userTriesRequestLogin() {
+        presentLoader()
         let username = usernameTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let requestModel = Login.Auth.RequestModel(username: username, password: password)
@@ -90,11 +109,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     // MARK: User response
     
     func displayError(viewModel: Login.Auth.ViewModel) {
-        alertCall(viewModel: viewModel)
+        dismissLoader(withAlert: true, _: viewModel)
     }
     
     func displaySuccess() {
-        // Perform view
+        dismissLoader(withAlert: false, nil)
     }
     
     func alertCall(viewModel: Login.Auth.ViewModel) {

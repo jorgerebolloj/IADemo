@@ -32,6 +32,7 @@
 		EAF93BAC26946A72000F90C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAF93BAE26946A72000F90C8 /* Localizable.strings */; };
 		EAF93BB526946AE1000F90C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BB426946AE1000F90C8 /* String.swift */; };
 		EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BC12694732D000F90C8 /* AlertViewController.swift */; };
+		EAF93BCD2694816F000F90C8 /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BCC2694816F000F90C8 /* LoaderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		EAF93BB226946A77000F90C8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAF93BB426946AE1000F90C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		EAF93BC12694732D000F90C8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		EAF93BCC2694816F000F90C8 /* LoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
 		F8EB7BB6F97A552A5C873ADA /* Pods_ExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9E6816EAC72BC9F07D7E5D /* Pods-ExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseTests.debug.xcconfig"; path = "Target Support Files/Pods-ExerciseTests/Pods-ExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +283,7 @@
 		EAF93BBF269472ED000F90C8 /* Loader */ = {
 			isa = PBXGroup;
 			children = (
+				EAF93BCC2694816F000F90C8 /* LoaderViewController.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				EA97CBA026943B6E00547D4C /* LoginPresenter.swift in Sources */,
 				EAF93B9726945336000F90C8 /* Globals.swift in Sources */,
 				EA97CBA526943B6E00547D4C /* LoginInteractor.swift in Sources */,
+				EAF93BCD2694816F000F90C8 /* LoaderViewController.swift in Sources */,
 				EA97CB3D2694016200547D4C /* Domains.swift in Sources */,
 				EA97CB4A2694021C00547D4C /* AlamofireManager.swift in Sources */,
 				EA97CBA326943B6E00547D4C /* LoginModels.swift in Sources */,
