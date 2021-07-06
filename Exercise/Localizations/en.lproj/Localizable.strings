@@ -18,6 +18,9 @@
 
 // UserProfileViewController
 "userProfileSectionTitle" = "User Profile";
+"welcomeLabel" = "Welcome:";
+"emailLabel" = "Email:";
+"cardLabel" = "Card: ";
 
 // BillboardViewController
 "billboardSectionTitle" = "Billboard";

@@ -64,15 +64,23 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     // MARK: Outlets & variables
     
     @IBOutlet weak var userProfileNavigationBar: UINavigationBar!
+    @IBOutlet weak var userPictureImage: UIImageView!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var userEmailLabel: UILabel!
+    @IBOutlet weak var userCardLabel: UILabel!
     
     var loadingViewController: LoadingViewController?
     
     fileprivate func setUI() {
         self.title = "userProfileSectionTitle".localized
         userProfileNavigationBar.topItem?.title = "userProfileSectionTitle".localized
-        //loginButton.setTitle("loginButtonTitle".localized, for: .normal)
-        //usernameTextField.placeholder = "usernamePlaceholderText".localized
-        //passwordTextField.placeholder = "passwordPlaceholderText".localized
+        welcomeLabel.text = "welcomeLabel".localized
+        userNameLabel.text = ""
+        emailLabel.text = "emailLabel".localized
+        userEmailLabel.text = ""
+        userCardLabel.text = "cardLabel".localized + ""
     }
     
     // MARK: User interaction
