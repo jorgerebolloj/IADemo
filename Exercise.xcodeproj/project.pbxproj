@@ -45,6 +45,7 @@
 		EAF93BED2694A33C000F90C8 /* BillboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE72694A33C000F90C8 /* BillboardModels.swift */; };
 		EAF93BEE2694A33C000F90C8 /* BillboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE82694A33C000F90C8 /* BillboardViewController.swift */; };
 		EAF93BEF2694A33C000F90C8 /* BillboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE92694A33C000F90C8 /* BillboardInteractor.swift */; };
+		EAF93C0D2694FCEB000F90C8 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93C0C2694FCEB000F90C8 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		EAF93BE72694A33C000F90C8 /* BillboardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardModels.swift; sourceTree = "<group>"; };
 		EAF93BE82694A33C000F90C8 /* BillboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardViewController.swift; sourceTree = "<group>"; };
 		EAF93BE92694A33C000F90C8 /* BillboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardInteractor.swift; sourceTree = "<group>"; };
+		EAF93C0C2694FCEB000F90C8 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F8EB7BB6F97A552A5C873ADA /* Pods_ExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9E6816EAC72BC9F07D7E5D /* Pods-ExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseTests.debug.xcconfig"; path = "Target Support Files/Pods-ExerciseTests/Pods-ExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -252,6 +254,7 @@
 		EA97CB9826943B1A00547D4C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EAF93C0A2694FCC3000F90C8 /* TabBarController */,
 				EAF93BE22694A30A000F90C8 /* Billboard */,
 				EAF93BD12694A209000F90C8 /* UserProfile */,
 				EA97CB9926943B2B00547D4C /* Login */,
@@ -362,6 +365,14 @@
 				EAF93BE92694A33C000F90C8 /* BillboardInteractor.swift */,
 			);
 			path = BillboardScene;
+			sourceTree = "<group>";
+		};
+		EAF93C0A2694FCC3000F90C8 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				EAF93C0C2694FCEB000F90C8 /* TabBarController.swift */,
+			);
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -607,6 +618,7 @@
 				EA97CBA426943B6E00547D4C /* LoginViewController.swift in Sources */,
 				EA97CBA126943B6E00547D4C /* LoginWorker.swift in Sources */,
 				EA97CB892694312500547D4C /* UserDefaultsHelper.swift in Sources */,
+				EAF93C0D2694FCEB000F90C8 /* TabBarController.swift in Sources */,
 				EAF93BEF2694A33C000F90C8 /* BillboardInteractor.swift in Sources */,
 				EA97CBA226943B6E00547D4C /* LoginRouter.swift in Sources */,
 				EA97CAC52693F4A100547D4C /* AppDelegate.swift in Sources */,

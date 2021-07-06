@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PDh-uA-rws">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -11,13 +11,13 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pNa-ny-NlE">
-                                <rect key="frame" x="30" y="178" width="354" height="40"/>
+                                <rect key="frame" x="30" y="222" width="354" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OlG-op-6Zv"/>
                                 </constraints>
@@ -25,7 +25,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tto-cF-9kN">
-                                <rect key="frame" x="30" y="288" width="354" height="40"/>
+                                <rect key="frame" x="30" y="332" width="354" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ka2-hr-TN9"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpN-d1-lBr">
-                                <rect key="frame" x="90" y="398" width="234" height="30"/>
+                                <rect key="frame" x="90" y="442" width="234" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="pi3-GB-c0t"/>
                                 </constraints>
@@ -56,16 +56,17 @@
                             <constraint firstItem="pNa-ny-NlE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="134" id="xGC-li-f9m"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="xTI-XH-fyX"/>
                     <connections>
                         <outlet property="loginButton" destination="hpN-d1-lBr" id="RxG-ho-l1Y"/>
                         <outlet property="passwordTextField" destination="Tto-cF-9kN" id="W3y-nw-iWR"/>
                         <outlet property="usernameTextField" destination="pNa-ny-NlE" id="Gt6-Qk-vSg"/>
-                        <segue destination="Izk-vI-Hjr" kind="show" id="8Rg-Y2-eZH"/>
+                        <segue destination="Izk-vI-Hjr" kind="presentation" identifier="TabBarController" modalPresentationStyle="automatic" id="YP6-Rb-0Di"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="242" y="92"/>
+            <point key="canvasLocation" x="2060.8695652173915" y="91.741071428571431"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="YtN-my-o7q">
@@ -80,12 +81,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NYQ-iJ-jTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632" y="-563"/>
+            <point key="canvasLocation" x="2697" y="-563"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="oE6-jn-mxl">
             <objects>
-                <viewController id="QTq-yu-XZ2" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BillboardViewController" id="QTq-yu-XZ2" customClass="BillboardViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uag-HS-kW6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pb7-Yy-Bk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1787" y="92"/>
+            <point key="canvasLocation" x="3607.2463768115945" y="91.741071428571431"/>
         </scene>
         <!--Billboard View Controller-->
         <scene sceneID="KUb-jZ-0Pm">
@@ -111,12 +112,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joE-zu-tYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632" y="92"/>
+            <point key="canvasLocation" x="4400" y="91.741071428571431"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="pVP-S2-gGi">
             <objects>
-                <viewController id="6KK-9Y-C3v" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserProfileViewController" id="6KK-9Y-C3v" customClass="UserProfileViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IJ2-p5-PTu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -127,12 +128,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBj-U8-3VP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1788" y="-563"/>
+            <point key="canvasLocation" x="1916" y="-563"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WNQ-tU-soN">
             <objects>
-                <tabBarController id="Izk-vI-Hjr" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="Izk-vI-Hjr" customClass="TabBarController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jLI-eY-efB"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vGy-LZ-OI2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -146,12 +147,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSY-ve-4PJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="92"/>
+            <point key="canvasLocation" x="2826.0869565217395" y="91.741071428571431"/>
         </scene>
         <!--Alert View Controller-->
         <scene sceneID="uxY-yq-gDV">
             <objects>
-                <viewController storyboardIdentifier="alertViewController" id="8dJ-3j-qVN" customClass="AlertViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlertViewController" id="8dJ-3j-qVN" customClass="AlertViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lg0-m5-Fs6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,6 +222,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y3I-Y0-MZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="241" y="-563"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="DQn-di-SV9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PDh-uA-rws" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sJC-cZ-EW6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="eh3-si-zZU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PUa-M3-GB9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1150.7246376811595" y="91.741071428571431"/>
         </scene>
     </scenes>
     <resources>

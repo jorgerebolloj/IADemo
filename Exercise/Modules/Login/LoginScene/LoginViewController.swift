@@ -114,11 +114,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func displaySuccess() {
         dismissLoader(withAlert: false, nil)
+        router?.routeToTabBarController(segue: nil)
     }
     
     func alertCall(viewModel: Login.Auth.ViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let alertView = storyboard.instantiateViewController(withIdentifier: "alertViewController") as! AlertViewController
+        let alertView = storyboard.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
         alertView.viewModel = viewModel
         alertView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
