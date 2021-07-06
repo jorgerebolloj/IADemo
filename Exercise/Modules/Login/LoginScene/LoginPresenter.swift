@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginPresentationLogic {
     func presentSuccess()
-    func presentError()
+    func presentError(error: NSError?)
 }
 
 class LoginPresenter: LoginPresentationLogic {
@@ -24,9 +24,20 @@ class LoginPresenter: LoginPresentationLogic {
         }
     }
     
-    func presentError() {
+    func presentError(error: NSError?) {
+        guard let error = error else {
+            errorMessage(message: "wrongDataErrorAlertMessage".localized)
+            return
+        }
+        guard let errorCodeString = error.userInfo["error"] as? String else { return }
+        guard let errorMessageString = error.userInfo["error_description"] as? String else { return }
+        let errorString = "Código de error: " + errorCodeString + ". Mensaje de error: " + errorMessageString
+        errorMessage(message: errorString)
+    }
+    
+    func errorMessage(message: String) {
         DispatchQueue.main.async {
-            let viewModel = Login.Auth.ViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: "wrongDataErrorAlertMessage".localized)
+            let viewModel = Login.Auth.ViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: message)
             self.viewController?.displayError(viewModel: viewModel)
         }
     }

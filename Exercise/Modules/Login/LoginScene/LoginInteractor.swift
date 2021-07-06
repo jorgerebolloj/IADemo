@@ -26,9 +26,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     func userTriesRequestLogin(requestModel: Login.Auth.RequestModel) {
         worker = LoginWorker()
         worker?.attemptLogin(requestModel: requestModel) {
-            succesful in
+            succesful, error in
                 if !succesful! {
-                    self.presenter?.presentError()
+                    self.presenter?.presentError(error: error)
                 } else {
                     self.presenter?.presentSuccess()
                 }

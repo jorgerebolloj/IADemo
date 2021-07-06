@@ -34,20 +34,20 @@ class WebServicesAPI {
     
     // MARK: Response
     
-    func getRequestLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?) -> Void)) {
+    func getRequestLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?, NSError?) -> Void)) {
         let loginEncodableModel = prepareModel(withRequestModel: requestModel)
         requestLogin(loginEncodableModel: loginEncodableModel) { response, error  in
             if (response != nil) {
                 do {
                     let decodedData = try JSONDecoder().decode(Login.Auth.ResponseWSModel.self, from: response!)
                     self.storeResponseData(responseData: decodedData)
-                    completion(true)
+                    completion(true, nil)
                 } catch let error as NSError {
                     print("Error from login\(error)")
-                    completion(false)
+                    completion(false, NSError(domain: "LibraryApi", code: -2, userInfo: nil))
                 }
             } else {
-                completion(false)
+                completion(false, NSError(domain: "LibraryApi", code: error?.code ?? -2, userInfo: error?.userInfo))
             }
         }
     }

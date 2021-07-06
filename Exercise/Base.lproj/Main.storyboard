@@ -87,11 +87,11 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NgY-Vr-WMe">
-                                        <rect key="frame" x="30" y="66" width="294" height="60"/>
+                                        <rect key="frame" x="30" y="66" width="294" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="N2f-MA-oh4"/>
+                                            <constraint firstAttribute="height" constant="80" id="N2f-MA-oh4"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

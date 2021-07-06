@@ -12,27 +12,27 @@ class LoginWorker {
     
     // MARK: Worker Tasks
     
-    func attemptLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?) -> Void)) {
+    func attemptLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?, NSError?) -> Void)) {
         let username = requestModel.username
         let password = requestModel.password
         
         if (username.isEmpty) {
-            completion(false)
+            completion(false, nil)
             return
         }
         
         if (password.isEmpty) {
-            completion(false)
+            completion(false, nil)
             return
         }
         
         DispatchQueue.global(qos: .background).async {
             WebServicesAPI().getRequestLogin(requestModel:requestModel) {
-                succesful in
+                succesful, error in
                 if !succesful! {
-                    completion(false)
+                    completion(false, error)
                 } else {
-                    completion(true)
+                    completion(true, nil)
                 }
             }
         }
