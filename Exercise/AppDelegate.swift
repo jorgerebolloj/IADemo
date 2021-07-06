@@ -13,7 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let userDefaultsApiKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "apiKey", value: "stage_HNYh3RaK_Test")
+        UserDefaultsHelper().setUserDefaultsKeyVal(userDefaultsKeyVal: userDefaultsApiKeyVal)
         return true
     }
 
