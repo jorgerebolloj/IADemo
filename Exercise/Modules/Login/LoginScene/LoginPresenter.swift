@@ -31,7 +31,7 @@ class LoginPresenter: LoginPresentationLogic {
         }
         guard let errorCodeString = error.userInfo["error"] as? String else { return }
         guard let errorMessageString = error.userInfo["error_description"] as? String else { return }
-        let errorString = "Código de error: " + errorCodeString + ". Mensaje de error: " + errorMessageString
+        let errorString = "Código de error: " + errorCodeString + ".\nMensaje de error: " + errorMessageString
         errorMessage(message: errorString)
     }
     

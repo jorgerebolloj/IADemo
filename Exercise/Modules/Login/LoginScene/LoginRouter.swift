@@ -23,7 +23,6 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Routing
     
     func routeToTabBarController(segue: UIStoryboardSegue?) {
-        
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
             /*var userProfileDataStore = userProfileViewController.router!.dataStore!

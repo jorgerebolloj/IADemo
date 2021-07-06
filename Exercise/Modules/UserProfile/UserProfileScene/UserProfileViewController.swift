@@ -3,7 +3,6 @@
 //  Exercise
 //
 //  Created by Jorge Rebollo Jimenez on 06/07/21.
-//  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 //
 
@@ -59,19 +58,58 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        setUI()
     }
     
-    // MARK: Do something
+    // MARK: Outlets & variables
     
-    //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var userProfileNavigationBar: UINavigationBar!
+    
+    var loadingViewController: LoadingViewController?
+    
+    fileprivate func setUI() {
+        self.title = "userProfileSectionTitle".localized
+        userProfileNavigationBar.topItem?.title = "userProfileSectionTitle".localized
+        //loginButton.setTitle("loginButtonTitle".localized, for: .normal)
+        //usernameTextField.placeholder = "usernamePlaceholderText".localized
+        //passwordTextField.placeholder = "passwordPlaceholderText".localized
+    }
+    
+    // MARK: User interaction
+    
+    private func presentLoader() {
+        loadingViewController = LoadingViewController()
+        loadingViewController!.modalPresentationStyle = .overCurrentContext
+        loadingViewController!.modalTransitionStyle = .crossDissolve
+        present(loadingViewController!, animated: true, completion: nil)
+    }
+    
+    private func dismissLoader(withAlert: Bool, _ viewModel: Login.Auth.ViewModel?) {
+        loadingViewController?.dismiss(animated: true, completion: {
+            if withAlert {
+                guard let viewModel = viewModel else { return }
+                self.alertCall(viewModel: viewModel)
+            }
+        })
+    }
     
     func doSomething() {
         let request = UserProfile.Something.Request()
         interactor?.doSomething(request: request)
     }
     
+    // MARK: User response
+    
     func displaySomething(viewModel: UserProfile.Something.ViewModel) {
         //nameTextField.text = viewModel.name
+    }
+    
+    func alertCall(viewModel: Login.Auth.ViewModel) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let alertView = storyboard.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
+        alertView.viewModel = viewModel
+        alertView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(alertView, animated: true, completion: nil)
     }
 }

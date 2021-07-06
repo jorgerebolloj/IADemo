@@ -15,3 +15,9 @@
 "loginButtonTitle" = "Login";
 "usernamePlaceholderText" = "Username";
 "passwordPlaceholderText" = "Password";
+
+// UserProfileViewController
+"userProfileSectionTitle" = "User Profile";
+
+// BillboardViewController
+"billboardSectionTitle" = "Billboard";

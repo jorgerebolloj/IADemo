@@ -12,4 +12,6 @@ struct Globals {
     let grantType = "password"
     let clientId = "IATestCandidate"
     let clientSecret = "c840457e777b4fee9b510fbcd4985b68"
+    let cardNumber = 1303030763820961
+    let pin = 4804
 }

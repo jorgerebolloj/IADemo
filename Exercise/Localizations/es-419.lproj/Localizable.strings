@@ -15,3 +15,9 @@
 "loginButtonTitle" = "Iniciar sesión";
 "usernamePlaceholderText" = "Usuario";
 "passwordPlaceholderText" = "Contraseña";
+
+// UserProfileViewController
+"userProfileSectionTitle" = "Perfil";
+
+// BillboardViewController
+"billboardSectionTitle" = "Cartelera";

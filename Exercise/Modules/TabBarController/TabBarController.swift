@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
             //self.isModalInPresentation = true
             self.navigationItem.setHidesBackButton(true, animated: false)
         }
-        //setTabBarProperties()
+        setTabBarProperties()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,11 +30,15 @@ class TabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
     }
     
-    /*func setTabBarProperties() {
-        self.navigationController?.navigationBar.isHidden = false
-        let selectedStateImage = ["icon-newsFeed","icon-Materias", "Image"]
-        let unselectedStateImage = selectedStateImage
-        if let count = self.tabBar.items?.count {
+    func setTabBarProperties() {
+        guard let items = tabBar.items else { return }
+        items[0].title = "userProfileSectionTitle".localized
+        items[1].title = "billboardSectionTitle".localized
+        
+        //self.navigationController?.navigationBar.isHidden = false
+        //let selectedStateImage = ["icon-newsFeed","icon-Materias", "Image"]
+        //let unselectedStateImage = selectedStateImage
+        /*if let count = self.tabBar.items?.count {
             for i in 0...(count-1) {
                 let selectedImage   = selectedStateImage[i]
                 let unselectedImage = unselectedStateImage[i]
@@ -46,9 +50,9 @@ class TabBarController: UITabBarController {
                     self.tabBar.items?[i].image = UIImage(named: unselectedImage)?.withRenderingMode(.alwaysOriginal)
                 }*/
             }
-        }
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-    }*/
+        }*/
+        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
          let tabBarIndex = tabBarController.selectedIndex
