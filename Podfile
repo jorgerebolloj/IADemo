@@ -7,6 +7,7 @@ target 'Exercise' do
 
   # Pods for Exercise
   pod 'RealmSwift', '~> 10.9'
+  pod 'CryptoSwift', '~> 1.4.0'
 
   target 'ExerciseTests' do
     inherit! :search_paths
