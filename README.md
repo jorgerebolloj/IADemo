@@ -1,40 +1,40 @@
 # IADemo
 
-Control de versiones
+ ## Control de versiones
 	Gitflow con git
   
-Control de ficheros útiles
+## Control de ficheros útiles
 	.gitignore
   
-Componentes personalizados escalables
+## Componentes personalizados escalables
 	Alert view
 	Loader view
   
-Internalización
+## Internalización
 	Localizable strings
 	Extención de clase String para optimizar localizable strings
   
-Pods instalados
+## Pods instalados
 	Alamofire (REST service)
 	CryptoSwift
 	RealmSwift
   
-Managers para centralización de gestión de configuraciones y desacoplamiento
+## Managers para centralización de gestión de configuraciones y desacoplamiento
 	Alamofire
 	UserDefaults
   
-Persistencia simple
+## Persistencia simple
 	UserDefaults
   
-Arquitectura
+## Arquitectura
 	VIP (Clean swift)
   
-Capa de servicios para centralización de gestión de configuraciones y desacoplamiento
+## Capa de servicios para centralización de gestión de configuraciones y desacoplamiento
 	Dominios
 	Endpoints
 	WebServicesAPI
   
-Formulario de login
+## Formulario de login
 	Validaciones para success y error
 	Ofuscación de campo password
 	Animación de loader
