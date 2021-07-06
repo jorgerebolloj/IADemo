@@ -31,6 +31,7 @@
 		EAF93B9726945336000F90C8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93B9626945336000F90C8 /* Globals.swift */; };
 		EAF93BAC26946A72000F90C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAF93BAE26946A72000F90C8 /* Localizable.strings */; };
 		EAF93BB526946AE1000F90C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BB426946AE1000F90C8 /* String.swift */; };
+		EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BC12694732D000F90C8 /* AlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		EAF93BAD26946A72000F90C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EAF93BB226946A77000F90C8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EAF93BB426946AE1000F90C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		EAF93BC12694732D000F90C8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		F8EB7BB6F97A552A5C873ADA /* Pods_ExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9E6816EAC72BC9F07D7E5D /* Pods-ExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseTests.debug.xcconfig"; path = "Target Support Files/Pods-ExerciseTests/Pods-ExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +255,8 @@
 		EAF93B9426945314000F90C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EAF93BC02694730E000F90C8 /* Alert */,
+				EAF93BBF269472ED000F90C8 /* Loader */,
 				EAF93B9626945336000F90C8 /* Globals.swift */,
 			);
 			path = Common;
@@ -272,6 +276,21 @@
 				EAF93BB426946AE1000F90C8 /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EAF93BBF269472ED000F90C8 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
+		EAF93BC02694730E000F90C8 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				EAF93BC12694732D000F90C8 /* AlertViewController.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,6 +546,7 @@
 				EA97CB4A2694021C00547D4C /* AlamofireManager.swift in Sources */,
 				EA97CBA326943B6E00547D4C /* LoginModels.swift in Sources */,
 				EAF93BB526946AE1000F90C8 /* String.swift in Sources */,
+				EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */,
 				EA97CB5F2694067500547D4C /* WebServicesAPI.swift in Sources */,
 				EA97CB452694017E00547D4C /* Endpoints.swift in Sources */,
 			);

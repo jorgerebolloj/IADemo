@@ -90,19 +90,19 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     // MARK: User response
     
     func displayError(viewModel: Login.Auth.ViewModel) {
-        alertCall(title: viewModel.errorTitle, message: viewModel.errorMessage, ViewController: self, toFocus: passwordTextField)
+        alertCall(viewModel: viewModel)
     }
     
     func displaySuccess() {
         // Perform view
     }
     
-    func alertCall(title: String, message: String, ViewController: UIViewController, toFocus: UITextField) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "alertConfirmationButton".localized, style: UIAlertAction.Style.cancel,handler: {_ in
-            toFocus.becomeFirstResponder()
-        });
-        alert.addAction(action)
-        ViewController.present(alert, animated: true, completion:nil)
+    func alertCall(viewModel: Login.Auth.ViewModel) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let alertView = storyboard.instantiateViewController(withIdentifier: "alertViewController") as! AlertViewController
+        alertView.viewModel = viewModel
+        alertView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(alertView, animated: true, completion: nil)
     }
 }

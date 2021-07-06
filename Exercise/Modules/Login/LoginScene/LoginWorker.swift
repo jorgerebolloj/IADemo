@@ -16,12 +16,14 @@ class LoginWorker {
         let username = requestModel.username
         let password = requestModel.password
         
-        if (password.isEmpty) {
-            completion(false)
-        }
-        
         if (username.isEmpty) {
             completion(false)
+            return
+        }
+        
+        if (password.isEmpty) {
+            completion(false)
+            return
         }
         
         DispatchQueue.global(qos: .background).async {
