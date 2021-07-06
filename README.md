@@ -54,3 +54,7 @@
 	Ofuscación de campo de texto password
 	Animación de loader
 	Feedback a usuario de resultado de operación con alert view
+	
+## Estructura UI de TabBar
+	Sección Perfil
+	Sección Cartelera
