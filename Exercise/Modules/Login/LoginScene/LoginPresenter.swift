@@ -26,7 +26,7 @@ class LoginPresenter: LoginPresentationLogic {
     
     func presentError() {
         DispatchQueue.main.async {
-            let viewModel = Login.Auth.ViewModel(errorTitle: "", errorMessage: "")
+            let viewModel = Login.Auth.ViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: "wrongDataErrorAlertMessage".localized)
             self.viewController?.displayError(viewModel: viewModel)
         }
     }

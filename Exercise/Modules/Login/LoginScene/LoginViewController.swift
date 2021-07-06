@@ -59,6 +59,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
     }
     
     // MARK: Outlets & variables
@@ -69,6 +70,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     @IBAction func loginButtonAction(_ sender: Any) {
         userTriesRequestLogin()
+    }
+    
+    fileprivate func setUI() {
+        loginButton.setTitle("loginButtonTitle".localized, for: .normal)
+        usernameTextField.placeholder = "usernamePlaceholderText".localized
+        passwordTextField.placeholder = "passwordPlaceholderText".localized
     }
     
     // MARK: User interaction
@@ -83,19 +90,19 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     // MARK: User response
     
     func displayError(viewModel: Login.Auth.ViewModel) {
-        //alertCall(title: "errorAlertTitle".localized, message: "invalidPassErrorAlertMessage".localized, ViewController: self, toFocus: passwordTextField)
+        alertCall(title: viewModel.errorTitle, message: viewModel.errorMessage, ViewController: self, toFocus: passwordTextField)
     }
     
     func displaySuccess() {
         // Perform view
     }
     
-    /*func alertCall(title: String, message: String, ViewController: UIViewController, toFocus: UITextField) {
+    func alertCall(title: String, message: String, ViewController: UIViewController, toFocus: UITextField) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "alertConfirmationButton".localized, style: UIAlertAction.Style.cancel,handler: {_ in
             toFocus.becomeFirstResponder()
         });
         alert.addAction(action)
         ViewController.present(alert, animated: true, completion:nil)
-    }*/
+    }
 }

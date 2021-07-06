@@ -36,18 +36,15 @@ class AlamofireManager {
             setAutorizationHeader()
         }
         AF.request(url, method: Alamofire.HTTPMethod(rawValue: method.rawValue), parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).validate().responseJSON(queue: DispatchQueue.global(), completionHandler: { alamoResponse in
-            print("ValidateJSONResponse: \(alamoResponse)")
             switch alamoResponse.result {
             case .success( _):
                 guard let jsonData = alamoResponse.data else {
                     onCompletion(nil, NSError(domain: "AlamofireManager", code: -3, userInfo: ["ErrorType" : "Without data"]))
                     return
                 }
-                print("JSONDatae: \(jsonData)")
                 onCompletion(jsonData, nil)
                 return
             case .failure( _):
-                print("response failed for service: \(url)")
                 onCompletion(nil, NSError(domain: "AlamofireManager", code: alamoResponse.response?.statusCode ?? -2, userInfo: ["ErrorType" : "Response failed for service"]))
                 return
             }

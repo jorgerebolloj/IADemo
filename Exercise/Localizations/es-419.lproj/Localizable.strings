@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  Exercise
+
+  Created by Jorge Rebollo Jimenez on 06/07/21.
+  
+*/
+
+// Alert
+"errorAlertTitle" = "Error";
+"wrongDataErrorAlertMessage" = "El nombre de usuario y contraseña ingresados no coinciden.";
+"alertConfirmationButton" = "OK";
+
+// LoginViewController
+"loginButtonTitle" = "Iniciar sesión";
+"usernamePlaceholderText" = "Usuario";
+"passwordPlaceholderText" = "Contraseña";
