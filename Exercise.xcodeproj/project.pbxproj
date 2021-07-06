@@ -33,6 +33,18 @@
 		EAF93BB526946AE1000F90C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BB426946AE1000F90C8 /* String.swift */; };
 		EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BC12694732D000F90C8 /* AlertViewController.swift */; };
 		EAF93BCD2694816F000F90C8 /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BCC2694816F000F90C8 /* LoaderViewController.swift */; };
+		EAF93BD92694A26B000F90C8 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BD32694A26B000F90C8 /* UserProfilePresenter.swift */; };
+		EAF93BDA2694A26B000F90C8 /* UserProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BD42694A26B000F90C8 /* UserProfileWorker.swift */; };
+		EAF93BDB2694A26B000F90C8 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BD52694A26B000F90C8 /* UserProfileRouter.swift */; };
+		EAF93BDC2694A26B000F90C8 /* UserProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BD62694A26B000F90C8 /* UserProfileModels.swift */; };
+		EAF93BDD2694A26B000F90C8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BD72694A26B000F90C8 /* UserProfileViewController.swift */; };
+		EAF93BDE2694A26B000F90C8 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BD82694A26B000F90C8 /* UserProfileInteractor.swift */; };
+		EAF93BEA2694A33C000F90C8 /* BillboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE42694A33C000F90C8 /* BillboardPresenter.swift */; };
+		EAF93BEB2694A33C000F90C8 /* BillboardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE52694A33C000F90C8 /* BillboardWorker.swift */; };
+		EAF93BEC2694A33C000F90C8 /* BillboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE62694A33C000F90C8 /* BillboardRouter.swift */; };
+		EAF93BED2694A33C000F90C8 /* BillboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE72694A33C000F90C8 /* BillboardModels.swift */; };
+		EAF93BEE2694A33C000F90C8 /* BillboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE82694A33C000F90C8 /* BillboardViewController.swift */; };
+		EAF93BEF2694A33C000F90C8 /* BillboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BE92694A33C000F90C8 /* BillboardInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +104,18 @@
 		EAF93BB426946AE1000F90C8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		EAF93BC12694732D000F90C8 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		EAF93BCC2694816F000F90C8 /* LoaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
+		EAF93BD32694A26B000F90C8 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
+		EAF93BD42694A26B000F90C8 /* UserProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWorker.swift; sourceTree = "<group>"; };
+		EAF93BD52694A26B000F90C8 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
+		EAF93BD62694A26B000F90C8 /* UserProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModels.swift; sourceTree = "<group>"; };
+		EAF93BD72694A26B000F90C8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		EAF93BD82694A26B000F90C8 /* UserProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
+		EAF93BE42694A33C000F90C8 /* BillboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardPresenter.swift; sourceTree = "<group>"; };
+		EAF93BE52694A33C000F90C8 /* BillboardWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardWorker.swift; sourceTree = "<group>"; };
+		EAF93BE62694A33C000F90C8 /* BillboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardRouter.swift; sourceTree = "<group>"; };
+		EAF93BE72694A33C000F90C8 /* BillboardModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardModels.swift; sourceTree = "<group>"; };
+		EAF93BE82694A33C000F90C8 /* BillboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardViewController.swift; sourceTree = "<group>"; };
+		EAF93BE92694A33C000F90C8 /* BillboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillboardInteractor.swift; sourceTree = "<group>"; };
 		F8EB7BB6F97A552A5C873ADA /* Pods_ExerciseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExerciseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9E6816EAC72BC9F07D7E5D /* Pods-ExerciseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseTests.debug.xcconfig"; path = "Target Support Files/Pods-ExerciseTests/Pods-ExerciseTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +252,8 @@
 		EA97CB9826943B1A00547D4C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EAF93BE22694A30A000F90C8 /* Billboard */,
+				EAF93BD12694A209000F90C8 /* UserProfile */,
 				EA97CB9926943B2B00547D4C /* Login */,
 			);
 			path = Modules;
@@ -294,6 +320,48 @@
 				EAF93BC12694732D000F90C8 /* AlertViewController.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		EAF93BD12694A209000F90C8 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				EAF93BD22694A215000F90C8 /* UserProfileScene */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		EAF93BD22694A215000F90C8 /* UserProfileScene */ = {
+			isa = PBXGroup;
+			children = (
+				EAF93BD32694A26B000F90C8 /* UserProfilePresenter.swift */,
+				EAF93BD42694A26B000F90C8 /* UserProfileWorker.swift */,
+				EAF93BD52694A26B000F90C8 /* UserProfileRouter.swift */,
+				EAF93BD62694A26B000F90C8 /* UserProfileModels.swift */,
+				EAF93BD72694A26B000F90C8 /* UserProfileViewController.swift */,
+				EAF93BD82694A26B000F90C8 /* UserProfileInteractor.swift */,
+			);
+			path = UserProfileScene;
+			sourceTree = "<group>";
+		};
+		EAF93BE22694A30A000F90C8 /* Billboard */ = {
+			isa = PBXGroup;
+			children = (
+				EAF93BE32694A315000F90C8 /* BillboardScene */,
+			);
+			path = Billboard;
+			sourceTree = "<group>";
+		};
+		EAF93BE32694A315000F90C8 /* BillboardScene */ = {
+			isa = PBXGroup;
+			children = (
+				EAF93BE42694A33C000F90C8 /* BillboardPresenter.swift */,
+				EAF93BE52694A33C000F90C8 /* BillboardWorker.swift */,
+				EAF93BE62694A33C000F90C8 /* BillboardRouter.swift */,
+				EAF93BE72694A33C000F90C8 /* BillboardModels.swift */,
+				EAF93BE82694A33C000F90C8 /* BillboardViewController.swift */,
+				EAF93BE92694A33C000F90C8 /* BillboardInteractor.swift */,
+			);
+			path = BillboardScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -539,20 +607,32 @@
 				EA97CBA426943B6E00547D4C /* LoginViewController.swift in Sources */,
 				EA97CBA126943B6E00547D4C /* LoginWorker.swift in Sources */,
 				EA97CB892694312500547D4C /* UserDefaultsHelper.swift in Sources */,
+				EAF93BEF2694A33C000F90C8 /* BillboardInteractor.swift in Sources */,
 				EA97CBA226943B6E00547D4C /* LoginRouter.swift in Sources */,
 				EA97CAC52693F4A100547D4C /* AppDelegate.swift in Sources */,
 				EA97CAC72693F4A100547D4C /* SceneDelegate.swift in Sources */,
 				EA97CBA026943B6E00547D4C /* LoginPresenter.swift in Sources */,
 				EAF93B9726945336000F90C8 /* Globals.swift in Sources */,
 				EA97CBA526943B6E00547D4C /* LoginInteractor.swift in Sources */,
+				EAF93BDD2694A26B000F90C8 /* UserProfileViewController.swift in Sources */,
 				EAF93BCD2694816F000F90C8 /* LoaderViewController.swift in Sources */,
 				EA97CB3D2694016200547D4C /* Domains.swift in Sources */,
 				EA97CB4A2694021C00547D4C /* AlamofireManager.swift in Sources */,
 				EA97CBA326943B6E00547D4C /* LoginModels.swift in Sources */,
+				EAF93BEA2694A33C000F90C8 /* BillboardPresenter.swift in Sources */,
+				EAF93BD92694A26B000F90C8 /* UserProfilePresenter.swift in Sources */,
+				EAF93BDE2694A26B000F90C8 /* UserProfileInteractor.swift in Sources */,
+				EAF93BDA2694A26B000F90C8 /* UserProfileWorker.swift in Sources */,
 				EAF93BB526946AE1000F90C8 /* String.swift in Sources */,
+				EAF93BEB2694A33C000F90C8 /* BillboardWorker.swift in Sources */,
 				EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */,
 				EA97CB5F2694067500547D4C /* WebServicesAPI.swift in Sources */,
+				EAF93BED2694A33C000F90C8 /* BillboardModels.swift in Sources */,
+				EAF93BEC2694A33C000F90C8 /* BillboardRouter.swift in Sources */,
 				EA97CB452694017E00547D4C /* Endpoints.swift in Sources */,
+				EAF93BDC2694A26B000F90C8 /* UserProfileModels.swift in Sources */,
+				EAF93BEE2694A33C000F90C8 /* BillboardViewController.swift in Sources */,
+				EAF93BDB2694A26B000F90C8 /* UserProfileRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
