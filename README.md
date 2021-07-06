@@ -28,6 +28,14 @@
   
 ## Arquitectura
 	VIP (Clean swift)
+	
+## Principios
+	SOLID
+	
+## Modelado de datos para óptimos flujo
+	DataModel Request
+	DataModel Response
+	DataModel View
   
 ## Capa de servicios para centralización de gestión de configuraciones y desacoplamiento
 	Dominios
@@ -41,7 +49,8 @@
 	Organización de grupos y ficheros
   
 ## Formulario de login
+	Placeholders en campos de texto
 	Validaciones para success y error
-	Ofuscación de campo password
+	Ofuscación de campo de texto password
 	Animación de loader
-	Feedback a usuario de resultado de operación
+	Feedback a usuario de resultado de operación con alert view
