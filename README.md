@@ -33,6 +33,12 @@
 	Dominios
 	Endpoints
 	WebServicesAPI
+	
+## Estructura limpia de vistas del proyecto
+	Desacoplamiento de vistas
+	
+## Estructura limpia de ficheros del proyecto
+	Organización de grupos y ficheros
   
 ## Formulario de login
 	Validaciones para success y error
