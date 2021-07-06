@@ -10,7 +10,7 @@
 	Alert view
 	Loader view
   
-## Internalización
+## Internacionalización
 	Localizable strings
 	Extención de clase String para optimizar localizable strings
   
@@ -44,4 +44,4 @@
 	Validaciones para success y error
 	Ofuscación de campo password
 	Animación de loader
-	Feedback a usuario de  resultado de operación
+	Feedback a usuario de resultado de operación
