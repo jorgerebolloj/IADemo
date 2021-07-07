@@ -9,10 +9,12 @@
 import UIKit
 
 protocol UserProfileDisplayLogic: class {
-    func displaySomething(viewModel: UserProfile.Something.ViewModel)
+    func displaySuccess(with viewModel: UserProfile.Info.ViewModel)
+    func displayError(viewModel: AlertViewController.ErrorViewModel)
 }
 
 class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
+    
     var interactor: UserProfileBusinessLogic?
     var router: (NSObjectProtocol & UserProfileRoutingLogic & UserProfileDataPassing)?
     
@@ -62,9 +64,12 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         tryRequestUserProfile()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presentLoader()
+    }
+    
     // MARK: Outlets & variables
     
-    @IBOutlet weak var userProfileNavigationBar: UINavigationBar!
     @IBOutlet weak var userPictureImage: UIImageView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -75,15 +80,14 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     @IBOutlet weak var userCardTransactionButton: UIButton!
     
     @IBAction func userCardTransactionButtonAction(_ sender: Any) {
+        tryRequestUserTransactions()
     }
     
     var loadingViewController: LoadingViewController?
     
     fileprivate func setUI() {
-        //self.title = "userProfileSectionTitle".localized
-        //self.navigationController?.navigationItem.title = "userProfileSectionTitle".localized
-        //tabBarItem.title = "userProfileSectionTitle".localized
-        //self.navigationController?.title = "userProfileSectionTitle".localized
+        self.title = "userProfileSectionTitle".localized
+        userPictureImage.image = UIImage(named: "userPicture")
         welcomeLabel.text = "welcomeLabel".localized
         userNameLabel.text = ""
         emailLabel.text = "emailLabel".localized
@@ -93,7 +97,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         userCardTransactionButton.setTitle("userCardTransactionButtonLabel".localized, for: .normal)
     }
     
-    // MARK: User interaction
+    // MARK: UI
     
     private func presentLoader() {
         loadingViewController = LoadingViewController()
@@ -102,7 +106,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         present(loadingViewController!, animated: true, completion: nil)
     }
     
-    private func dismissLoader(withAlert: Bool, _ viewModel: Login.Auth.ViewModel?) {
+    private func dismissLoader(withAlert: Bool, _ viewModel: AlertViewController.ErrorViewModel?) {
         loadingViewController?.dismiss(animated: true, completion: {
             if withAlert {
                 guard let viewModel = viewModel else { return }
@@ -111,18 +115,41 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         })
     }
     
+    // MARK: User interaction
+    
+    // User Profile
+    
     func tryRequestUserProfile() {
-        let request = UserProfile.Something.Request()
-        interactor?.doSomething(request: request)
+        interactor?.tryRequestUserProfile()
+    }
+    
+    // User Card
+    
+    func tryRequestUserTransactions() {
+        presentLoader()
+        guard let cardNumber = (userCardLabel.text != nil) ? userCardTextField.text : "" else { return }
+        let requestModel = UserCard.Info.RequestModel(cardNumber: cardNumber)
+        interactor?.tryRequestUserTransactions(requestModel: requestModel)
     }
     
     // MARK: User response
     
-    func displaySomething(viewModel: UserProfile.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    // User Profile
+    
+    func displaySuccess(with viewModel: UserProfile.Info.ViewModel) {
+        dismissLoader(withAlert: false, nil)
+        userNameLabel.text = viewModel.name
+        userEmailLabel.text = viewModel.email
+        userCardTextField.text = viewModel.cardNumber
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
     }
     
-    func alertCall(viewModel: Login.Auth.ViewModel) {
+    func displayError(viewModel: AlertViewController.ErrorViewModel) {
+        dismissLoader(withAlert: true, _: viewModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
+    }
+    
+    func alertCall(viewModel: AlertViewController.ErrorViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let alertView = storyboard.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
         alertView.viewModel = viewModel
@@ -130,4 +157,8 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         alertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.present(alertView, animated: true, completion: nil)
     }
+    
+    // User Card
+    
+    
 }

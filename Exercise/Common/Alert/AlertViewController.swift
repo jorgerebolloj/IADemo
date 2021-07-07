@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 class AlertViewController: UIViewController {
-    var viewModel: Login.Auth.ViewModel?
+    var viewModel: AlertViewController.ErrorViewModel?
+    var errorTitle: String?
+    var errorMessage: String?
     
     @IBOutlet weak var alertBackgroundView: UIView!
     @IBOutlet weak var alertTitle: UILabel!
@@ -31,5 +33,10 @@ class AlertViewController: UIViewController {
     
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    struct ErrorViewModel {
+        var errorTitle: String
+        var errorMessage: String
     }
 }

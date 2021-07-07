@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let userDefaultsApiKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "apiKey", value: "stage_HNYh3RaK_Test")
+        let userDefaultsApiKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "apiKey", value: Globals().apiKey)
         UserDefaultsHelper().setUserDefaultsKeyVal(userDefaultsKeyVal: userDefaultsApiKeyVal)
         return true
     }

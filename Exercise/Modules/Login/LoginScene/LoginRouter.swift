@@ -23,11 +23,11 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     // MARK: Routing
     
     func routeToTabBarController(segue: UIStoryboardSegue?) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-            /*var userProfileDataStore = userProfileViewController.router!.dataStore!
-            passDataToUserProfileViewController(source: dataStore!, destination: &userProfileDataStore)*/
-            navigateToTabBarController(source: viewController!, destination: tabBarController)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        /*var userProfileDataStore = userProfileViewController.router!.dataStore!
+        passDataToUserProfileViewController(source: dataStore!, destination: &userProfileDataStore)*/
+        navigateToTabBarController(source: viewController!, destination: tabBarController)
     }
     
     // MARK: Navigation

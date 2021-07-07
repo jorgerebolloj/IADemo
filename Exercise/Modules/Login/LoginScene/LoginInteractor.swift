@@ -28,9 +28,9 @@ class LoginInteractor: LoginBusinessLogic, LoginDataStore {
         worker?.attemptLogin(requestModel: requestModel) {
             succesful, error in
                 if !succesful! {
-                    self.presenter?.presentError(error: error)
+                    self.presenter?.presentLoginError(error: error)
                 } else {
-                    self.presenter?.presentSuccess()
+                    self.presenter?.presentLoginSuccess()
                 }
         }
     }

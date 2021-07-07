@@ -78,10 +78,5 @@ enum Login {
                 try container.encode(expires, forKey: .expires)
             }
         }
-        
-        struct ViewModel {
-            var errorTitle: String
-            var errorMessage: String
-        }
     }
 }

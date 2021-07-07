@@ -10,7 +10,7 @@ import UIKit
 
 protocol LoginDisplayLogic: class {
     func displaySuccess()
-    func displayError(viewModel: Login.Auth.ViewModel)
+    func displayError(viewModel: AlertViewController.ErrorViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -90,7 +90,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         passwordTextField.placeholder = "passwordPlaceholderText".localized
     }
     
-    // MARK: User interaction
+    // MARK: UI
     
     private func presentLoader() {
         loadingViewController = LoadingViewController()
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         present(loadingViewController!, animated: true, completion: nil)
     }
     
-    private func dismissLoader(withAlert: Bool, _ viewModel: Login.Auth.ViewModel?) {
+    private func dismissLoader(withAlert: Bool, _ viewModel: AlertViewController.ErrorViewModel?) {
         loadingViewController?.dismiss(animated: true, completion: {
             if withAlert {
                 guard let viewModel = viewModel else { return }
@@ -107,6 +107,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
             }
         })
     }
+    
+    // MARK: User interaction
     
     func userTriesRequestLogin() {
         presentLoader()
@@ -118,16 +120,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     // MARK: User response
     
-    func displayError(viewModel: Login.Auth.ViewModel) {
-        dismissLoader(withAlert: true, _: viewModel)
-    }
-    
     func displaySuccess() {
         dismissLoader(withAlert: false, nil)
         router?.routeToTabBarController(segue: nil)
     }
     
-    func alertCall(viewModel: Login.Auth.ViewModel) {
+    func displayError(viewModel: AlertViewController.ErrorViewModel) {
+        dismissLoader(withAlert: true, _: viewModel)
+    }
+    
+    func alertCall(viewModel: AlertViewController.ErrorViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let alertView = storyboard.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
         alertView.viewModel = viewModel

@@ -22,6 +22,7 @@
 "emailLabel" = "Correo electrónico:";
 "cardLabel" = "Tarjeta: ";
 "userCardTransactionButtonLabel" = "Transacciones";
+"logoutButtonLabel" = "Salir";
 
 // BillboardViewController
 "billboardSectionTitle" = "Cartelera";

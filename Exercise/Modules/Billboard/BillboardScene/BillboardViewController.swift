@@ -88,7 +88,7 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
         //nameTextField.text = viewModel.name
     }
     
-    func alertCall(viewModel: Login.Auth.ViewModel) {
+    func alertCall(viewModel: AlertViewController.ErrorViewModel) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let alertView = storyboard.instantiateViewController(withIdentifier: "AlertViewController") as! AlertViewController
         alertView.viewModel = viewModel

@@ -8,30 +8,47 @@
 
 import UIKit
 
-protocol UserProfileBusinessLogic
-{
-  func doSomething(request: UserProfile.Something.Request)
+protocol UserProfileBusinessLogic {
+    func tryRequestUserProfile()
+    func tryRequestUserTransactions(requestModel: UserCard.Info.RequestModel)
 }
 
-protocol UserProfileDataStore
-{
-  //var name: String { get set }
+protocol UserProfileDataStore {
+    //var name: String { get set }
 }
 
-class UserProfileInteractor: UserProfileBusinessLogic, UserProfileDataStore
-{
-  var presenter: UserProfilePresentationLogic?
-  var worker: UserProfileWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: UserProfile.Something.Request)
-  {
-    worker = UserProfileWorker()
-    worker?.doSomeWork()
+class UserProfileInteractor: UserProfileBusinessLogic, UserProfileDataStore {
+    var presenter: UserProfilePresentationLogic?
+    var worker: UserProfileWorker?
+    //var name: String = ""
     
-    let response = UserProfile.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Interactor management
+    
+    // User Profile
+    
+    func tryRequestUserProfile() {
+        worker = UserProfileWorker()
+        worker?.attemptUserProfileInfo() {
+            succesful, error in
+                if !succesful! {
+                    self.presenter?.presentUserProfileError(message: error)
+                } else {
+                    self.presenter?.presentUserProfileSuccess()
+                }
+        }
+    }
+    
+    // User Card
+    
+    func tryRequestUserTransactions(requestModel: UserCard.Info.RequestModel) {
+        worker = UserProfileWorker()
+        worker?.attemptUserTransactionsInfo(requestModel: requestModel) {
+            succesful, error in
+                if !succesful! {
+                    self.presenter?.presentUserProfileError(message: error)
+                } else {
+                    self.presenter?.presentUserProfileSuccess()
+                }
+        }
+    }
 }
