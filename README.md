@@ -58,3 +58,6 @@
 ## Estructura UI de TabBar
 	Sección Perfil
 	Sección Cartelera
+## Vista de Perfil
+	Pintado de datos de usuario
+	Workflow para transacciones de tarjeta (servicio no disponible)
