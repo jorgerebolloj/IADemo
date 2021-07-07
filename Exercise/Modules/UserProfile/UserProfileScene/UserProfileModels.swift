@@ -32,26 +32,6 @@ enum UserProfile {
                 case profilePicture = "profile_picture"
                 case cardNumber = "card_number"
             }
-            
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                email = try container.decode(String.self, forKey: .email)
-                firstName = try container.decode(String.self, forKey: .firstName)
-                lastName = try container.decode(String.self, forKey: .lastName)
-                phoneNumber = try container.decode(String.self, forKey: .phoneNumber)
-                profilePicture = try container.decode(String.self, forKey: .profilePicture)
-                cardNumber = try container.decode(String.self, forKey: .cardNumber)
-            }
-            
-            func encode(to encoder: Encoder) throws {
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(email, forKey: .email)
-                try container.encode(firstName, forKey: .firstName)
-                try container.encode(lastName, forKey: .lastName)
-                try container.encode(phoneNumber, forKey: .phoneNumber)
-                try container.encode(profilePicture, forKey: .profilePicture)
-                try container.encode(cardNumber, forKey: .cardNumber)
-            }
         }
         
         struct ViewModel {
@@ -103,33 +83,6 @@ enum UserCard {
                 case countryCode = "country_code"
                 case issued = ".issued"
                 case expires = ".expires"
-            }
-            
-            init(from decoder: Decoder) throws {
-                let container = try decoder.container(keyedBy: CodingKeys.self)
-                accessToken = try container.decode(String.self, forKey: .accessToken)
-                tokenType = try container.decode(String.self, forKey: .tokenType)
-                expiresIn = try container.decode(Int.self, forKey: .expiresIn)
-                refreshToken = try container.decode(String.self, forKey: .refreshToken)
-                asClientId = try container.decode(String.self, forKey: .asClientId)
-                username = try container.decode(String.self, forKey: .username)
-                countryCode = try container.decode(String.self, forKey: .countryCode)
-                issued = try container.decode(String.self, forKey: .issued)
-                expires = try container.decode(String.self, forKey: .expires)
-                
-            }
-            
-            func encode(to encoder: Encoder) throws {
-                var container = encoder.container(keyedBy: CodingKeys.self)
-                try container.encode(accessToken, forKey: .accessToken)
-                try container.encode(tokenType, forKey: .tokenType)
-                try container.encode(expiresIn, forKey: .expiresIn)
-                try container.encode(refreshToken, forKey: .refreshToken)
-                try container.encode(asClientId, forKey: .asClientId)
-                try container.encode(username, forKey: .username)
-                try container.encode(countryCode, forKey: .countryCode)
-                try container.encode(issued, forKey: .issued)
-                try container.encode(expires, forKey: .expires)
             }
         }
         

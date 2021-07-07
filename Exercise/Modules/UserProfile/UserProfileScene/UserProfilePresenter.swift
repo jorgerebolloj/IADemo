@@ -27,14 +27,14 @@ class UserProfilePresenter: UserProfilePresentationLogic {
         let name = firstName + " " + lastName
         let viewModel = UserProfile.Info.ViewModel(email: email, name: name,profilePicture: profilePicture, cardNumber: cardNumber)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.viewController?.displaySuccess(with: viewModel)
+            self.viewController?.displayUserProfileSuccess(with: viewModel)
         }
     }
     
     func presentUserProfileError(message: String?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
             let viewModel = AlertViewController.ErrorViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: message ?? "null")
-            self.viewController?.displayError(viewModel: viewModel)
+            self.viewController?.displayUserProfileError(viewModel: viewModel)
         }
     }
 }

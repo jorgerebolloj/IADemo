@@ -9,8 +9,8 @@
 import UIKit
 
 protocol LoginDisplayLogic: class {
-    func displaySuccess()
-    func displayError(viewModel: AlertViewController.ErrorViewModel)
+    func displayLoginSuccess()
+    func displayLoginError(viewModel: AlertViewController.ErrorViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic {
@@ -120,12 +120,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     // MARK: User response
     
-    func displaySuccess() {
+    func displayLoginSuccess() {
         dismissLoader(withAlert: false, nil)
         router?.routeToTabBarController(segue: nil)
     }
     
-    func displayError(viewModel: AlertViewController.ErrorViewModel) {
+    func displayLoginError(viewModel: AlertViewController.ErrorViewModel) {
         dismissLoader(withAlert: true, _: viewModel)
     }
     

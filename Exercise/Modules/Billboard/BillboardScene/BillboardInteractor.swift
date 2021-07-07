@@ -8,30 +8,30 @@
 
 import UIKit
 
-protocol BillboardBusinessLogic
-{
-  func doSomething(request: Billboard.Something.Request)
+protocol BillboardBusinessLogic {
+    func tryRequestBillboard()
 }
 
-protocol BillboardDataStore
-{
+protocol BillboardDataStore {
   //var name: String { get set }
 }
 
-class BillboardInteractor: BillboardBusinessLogic, BillboardDataStore
-{
-  var presenter: BillboardPresentationLogic?
-  var worker: BillboardWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Billboard.Something.Request)
-  {
-    worker = BillboardWorker()
-    worker?.doSomeWork()
+class BillboardInteractor: BillboardBusinessLogic, BillboardDataStore {
+    var presenter: BillboardPresentationLogic?
+    var worker: BillboardWorker?
+    //var name: String = ""
     
-    let response = Billboard.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func tryRequestBillboard() {
+        worker = BillboardWorker()
+        worker?.attemptBillboardInfo() {
+            succesful, error in
+                if !succesful! {
+                    self.presenter?.presentBillboardError(message: error)
+                } else {
+                    self.presenter?.presentBillboardSuccess()
+                }
+        }
+    }
 }

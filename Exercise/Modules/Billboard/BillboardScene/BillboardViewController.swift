@@ -9,7 +9,8 @@
 import UIKit
 
 protocol BillboardDisplayLogic: class {
-    func displaySomething(viewModel: Billboard.Something.ViewModel)
+    func displayBillboardSuccess(with viewModel: UserProfile.Info.ViewModel)
+    func displayBillboardError(viewModel: AlertViewController.ErrorViewModel)
 }
 
 class BillboardViewController: UIViewController, BillboardDisplayLogic {
@@ -59,33 +60,55 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        tryRequestBillboard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presentLoader()
     }
   
     // MARK: Outlets & variables
-  
-    @IBOutlet weak var billboardNavigationBar: UINavigationBar!
     
     var loadingViewController: LoadingViewController?
     
+    // MARK: UI
+    
     fileprivate func setUI() {
         self.title = "billboardSectionTitle".localized
-        //billboardNavigationBar.topItem?.title = "billboardSectionTitle".localized
-        //loginButton.setTitle("loginButtonTitle".localized, for: .normal)
-        //usernameTextField.placeholder = "usernamePlaceholderText".localized
-        //passwordTextField.placeholder = "passwordPlaceholderText".localized
+    }
+    
+    private func presentLoader() {
+        loadingViewController = LoadingViewController()
+        loadingViewController!.modalPresentationStyle = .overCurrentContext
+        loadingViewController!.modalTransitionStyle = .crossDissolve
+        present(loadingViewController!, animated: true, completion: nil)
+    }
+    
+    private func dismissLoader(withAlert: Bool, _ viewModel: AlertViewController.ErrorViewModel?) {
+        loadingViewController?.dismiss(animated: true, completion: {
+            if withAlert {
+                guard let viewModel = viewModel else { return }
+                self.alertCall(viewModel: viewModel)
+            }
+        })
     }
     
     // MARK: User interaction
     
-    func doSomething() {
-        let request = Billboard.Something.Request()
-        interactor?.doSomething(request: request)
+    func tryRequestBillboard() {
+        interactor?.tryRequestBillboard()
     }
   
     // MARK: User response
     
-    func displaySomething(viewModel: Billboard.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayBillboardSuccess(with viewModel: UserProfile.Info.ViewModel) {
+        dismissLoader(withAlert: false, nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
+    }
+    
+    func displayBillboardError(viewModel: AlertViewController.ErrorViewModel) {
+        dismissLoader(withAlert: true, _: viewModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
     }
     
     func alertCall(viewModel: AlertViewController.ErrorViewModel) {

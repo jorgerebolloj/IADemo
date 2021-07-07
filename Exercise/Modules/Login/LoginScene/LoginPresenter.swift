@@ -20,7 +20,7 @@ class LoginPresenter: LoginPresentationLogic {
     
     func presentLoginSuccess() {
         DispatchQueue.main.async {
-            self.viewController?.displaySuccess()
+            self.viewController?.displayLoginSuccess()
         }
     }
     
@@ -38,7 +38,7 @@ class LoginPresenter: LoginPresentationLogic {
     func errorLoginMessage(message: String) {
         DispatchQueue.main.async {
             let viewModel = AlertViewController.ErrorViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: message)
-            self.viewController?.displayError(viewModel: viewModel)
+            self.viewController?.displayLoginError(viewModel: viewModel)
         }
     }
 }

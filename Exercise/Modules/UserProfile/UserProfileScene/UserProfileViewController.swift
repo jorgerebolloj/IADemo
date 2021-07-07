@@ -9,12 +9,11 @@
 import UIKit
 
 protocol UserProfileDisplayLogic: class {
-    func displaySuccess(with viewModel: UserProfile.Info.ViewModel)
-    func displayError(viewModel: AlertViewController.ErrorViewModel)
+    func displayUserProfileSuccess(with viewModel: UserProfile.Info.ViewModel)
+    func displayUserProfileError(viewModel: AlertViewController.ErrorViewModel)
 }
 
 class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
-    
     var interactor: UserProfileBusinessLogic?
     var router: (NSObjectProtocol & UserProfileRoutingLogic & UserProfileDataPassing)?
     
@@ -85,6 +84,8 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     
     var loadingViewController: LoadingViewController?
     
+    // MARK: UI
+    
     fileprivate func setUI() {
         self.title = "userProfileSectionTitle".localized
         userPictureImage.image = UIImage(named: "userPicture")
@@ -96,8 +97,6 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         userCardTextField.text = ""
         userCardTransactionButton.setTitle("userCardTransactionButtonLabel".localized, for: .normal)
     }
-    
-    // MARK: UI
     
     private func presentLoader() {
         loadingViewController = LoadingViewController()
@@ -136,7 +135,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     
     // User Profile
     
-    func displaySuccess(with viewModel: UserProfile.Info.ViewModel) {
+    func displayUserProfileSuccess(with viewModel: UserProfile.Info.ViewModel) {
         dismissLoader(withAlert: false, nil)
         userNameLabel.text = viewModel.name
         userEmailLabel.text = viewModel.email
@@ -144,7 +143,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
     }
     
-    func displayError(viewModel: AlertViewController.ErrorViewModel) {
+    func displayUserProfileError(viewModel: AlertViewController.ErrorViewModel) {
         dismissLoader(withAlert: true, _: viewModel)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
     }

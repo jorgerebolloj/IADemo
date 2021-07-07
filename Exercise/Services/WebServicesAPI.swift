@@ -187,20 +187,49 @@ class WebServicesAPI {
     
     // MARK: Store response data
     
-    private func storeUserTransactionsResponseData(responseData decodedData: UserCard.Info.ResponseWSModel) {
-        /*let userDefaultsEmailKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "email", value: decodedData.email)
-        let userDefaultsFirstNameKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "firstName", value: decodedData.firstName)
-        let userDefaultsLastNameKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "lastName", value: decodedData.lastName)
-        let userDefaultsPhoneNumberKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "phoneNumber", value: decodedData.phoneNumber)
-        let userDefaultsProfilePictureKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "profilePicture", value: decodedData.profilePicture)
-        let userDefaultsCardNumberKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "cardNumber", value: decodedData.cardNumber)
-        let userDefaultsKeysVals: [UserDefaultsKeyVal] = [
-            userDefaultsEmailKeyVal,
-            userDefaultsFirstNameKeyVal,
-            userDefaultsLastNameKeyVal,
-            userDefaultsPhoneNumberKeyVal,
-            userDefaultsProfilePictureKeyVal,
-            userDefaultsCardNumberKeyVal]
-        UserDefaultsHelper().setUserDefaultsKeyVals(userDefaultsKeysVals: userDefaultsKeysVals)*/
+    private func storeUserTransactionsResponseData(responseData decodedData: UserCard.Info.ResponseWSModel) {}
+    
+    // MARK: - Billboard Info
+    
+    // MARK: Request
+    
+    func requestBillboardInfo(completion: @escaping ((Data?, NSError?) -> Void)) {
+        do {
+            if #available(iOS 12.0, *) {
+                AlamofireManager.sharedInstance.serviceWith(
+                    url: Endpoints.billboard,
+                    method: .GET,
+                    onCompletion: { response, error in
+                        if let errorWeb = error {
+                            completion(nil, errorWeb)
+                        } else {
+                            response != nil ? completion(response, nil) : completion(nil, NSError(domain: "LibraryApi", code: -2, userInfo: nil))
+                        }
+                    })
+            }
+        }
     }
+    
+    // MARK: Response
+    
+    func getRequestBillboardInfo(completion: @escaping ((Bool?, NSError?) -> Void)) {
+        requestBillboardInfo() { response, error  in
+            if (response != nil) {
+                do {
+                    let decodedData = try JSONDecoder().decode(Billboard.Info.ResponseWSModel.self, from: response!)
+                    self.storeBillboardResponseData(responseData: decodedData)
+                    completion(true, nil)
+                } catch let error as NSError {
+                    print("Error from login\(error)")
+                    completion(false, NSError(domain: "LibraryApi", code: -2, userInfo: nil))
+                }
+            } else {
+                completion(false, NSError(domain: "LibraryApi", code: error?.code ?? -2, userInfo: error?.userInfo))
+            }
+        }
+    }
+    
+    // MARK: Store response data
+    
+    private func storeBillboardResponseData(responseData decodedData: Billboard.Info.ResponseWSModel) {}
 }
