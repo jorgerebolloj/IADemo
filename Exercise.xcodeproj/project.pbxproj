@@ -10,6 +10,8 @@
 		2B94E3992629535D0D270E64 /* Pods_Exercise_ExerciseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7991C81218792AF6CBAF94B /* Pods_Exercise_ExerciseUITests.framework */; };
 		B3E150C95B02D41DFA7A4BE3 /* Pods_ExerciseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8EB7BB6F97A552A5C873ADA /* Pods_ExerciseTests.framework */; };
 		BD7540AA2BC44602AA7EF6B2 /* Pods_Exercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C916FA549B1389CB95A40A2 /* Pods_Exercise.framework */; };
+		EA4BB15C2695A3C9008EFDE5 /* RealmApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */; };
+		EA4BB1642695A3EE008EFDE5 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */; };
 		EA97CAC52693F4A100547D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CAC42693F4A100547D4C /* AppDelegate.swift */; };
 		EA97CAC72693F4A100547D4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CAC62693F4A100547D4C /* SceneDelegate.swift */; };
 		EA97CACC2693F4A100547D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA97CACA2693F4A100547D4C /* Main.storyboard */; };
@@ -73,6 +75,8 @@
 		B2EF99C246F615FD4A7585CC /* Pods-Exercise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exercise.debug.xcconfig"; path = "Target Support Files/Pods-Exercise/Pods-Exercise.debug.xcconfig"; sourceTree = "<group>"; };
 		D3C824FF36D57FD6E571BAFD /* Pods-Exercise-ExerciseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Exercise-ExerciseUITests.debug.xcconfig"; path = "Target Support Files/Pods-Exercise-ExerciseUITests/Pods-Exercise-ExerciseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E7991C81218792AF6CBAF94B /* Pods_Exercise_ExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exercise_ExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmApi.swift; sourceTree = "<group>"; };
+		EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		EA97CAC12693F4A100547D4C /* Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA97CAC42693F4A100547D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA97CAC62693F4A100547D4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +177,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EA4BB15A2695A3A8008EFDE5 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */,
+				EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		EA97CAB82693F4A100547D4C = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +211,7 @@
 		EA97CAC32693F4A100547D4C /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				EA4BB15A2695A3A8008EFDE5 /* Persistence */,
 				EA97CAC42693F4A100547D4C /* AppDelegate.swift */,
 				EA97CAC62693F4A100547D4C /* SceneDelegate.swift */,
 				EA97CACD2693F4A200547D4C /* Assets.xcassets */,
@@ -632,7 +646,9 @@
 				EA97CB4A2694021C00547D4C /* AlamofireManager.swift in Sources */,
 				EA97CBA326943B6E00547D4C /* LoginModels.swift in Sources */,
 				EAF93BEA2694A33C000F90C8 /* BillboardPresenter.swift in Sources */,
+				EA4BB15C2695A3C9008EFDE5 /* RealmApi.swift in Sources */,
 				EAF93BD92694A26B000F90C8 /* UserProfilePresenter.swift in Sources */,
+				EA4BB1642695A3EE008EFDE5 /* RealmConfig.swift in Sources */,
 				EAF93BDE2694A26B000F90C8 /* UserProfileInteractor.swift in Sources */,
 				EAF93BDA2694A26B000F90C8 /* UserProfileWorker.swift in Sources */,
 				EAF93BB526946AE1000F90C8 /* String.swift in Sources */,

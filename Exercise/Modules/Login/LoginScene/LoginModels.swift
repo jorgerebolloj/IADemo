@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum Login {
     
@@ -52,4 +53,9 @@ enum Login {
             }
         }
     }
+}
+
+class LoginRealm: Object {
+    dynamic var username: String? = nil
+    dynamic var password: String? = nil
 }

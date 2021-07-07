@@ -16,7 +16,7 @@ class WebServicesAPI {
     func requestLogin(loginEncodableModel: Login.Auth.RequestWSModel, completion: @escaping ((Data?, NSError?) -> Void)) {
         do {
             if #available(iOS 12.0, *) {
-                AlamofireManager.sharedInstance.serviceWith(
+                AlamofireManager.sharedInstance.serviceWith (
                     url: Endpoints.login,
                     method: .POST,
                     parameters: loginEncodableModel,
@@ -40,6 +40,8 @@ class WebServicesAPI {
             if (response != nil) {
                 do {
                     let decodedData = try JSONDecoder().decode(Login.Auth.ResponseWSModel.self, from: response!)
+                    let realmAPIInstance = RealmApi()
+                    realmAPIInstance.getDefaultConfig("\(decodedData.username)")
                     self.storeLoginResponseData(responseData: decodedData)
                     completion(true, nil)
                 } catch let error as NSError {
@@ -81,7 +83,7 @@ class WebServicesAPI {
     func requestUserProfileInfo(completion: @escaping ((Data?, NSError?) -> Void)) {
         do {
             if #available(iOS 12.0, *) {
-                AlamofireManager.sharedInstance.serviceWith(
+                AlamofireManager.sharedInstance.serviceWith (
                     url: Endpoints.userProfile,
                     method: .GET,
                     onCompletion: { response, error in
@@ -140,7 +142,7 @@ class WebServicesAPI {
     func requestUserTransactionsInfo(userCardEncodableModel: UserCard.Info.RequestWSModel, completion: @escaping ((Data?, NSError?) -> Void)) {
         do {
             if #available(iOS 12.0, *) {
-                AlamofireManager.sharedInstance.serviceWith(
+                AlamofireManager.sharedInstance.serviceWith (
                     url: Endpoints.cardTransactions,
                     method: .POST,
                     parameters: userCardEncodableModel,
@@ -196,7 +198,7 @@ class WebServicesAPI {
     func requestBillboardInfo(completion: @escaping ((Data?, NSError?) -> Void)) {
         do {
             if #available(iOS 12.0, *) {
-                AlamofireManager.sharedInstance.serviceWith(
+                AlamofireManager.sharedInstance.serviceWith (
                     url: Endpoints.billboard,
                     method: .GET,
                     onCompletion: { response, error in
