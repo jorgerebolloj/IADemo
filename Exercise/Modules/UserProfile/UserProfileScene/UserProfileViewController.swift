@@ -59,6 +59,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        tryRequestUserProfile()
     }
     
     // MARK: Outlets & variables
@@ -70,17 +71,26 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var userCardLabel: UILabel!
+    @IBOutlet weak var userCardTextField: UITextField!
+    @IBOutlet weak var userCardTransactionButton: UIButton!
+    
+    @IBAction func userCardTransactionButtonAction(_ sender: Any) {
+    }
     
     var loadingViewController: LoadingViewController?
     
     fileprivate func setUI() {
-        self.title = "userProfileSectionTitle".localized
-        userProfileNavigationBar.topItem?.title = "userProfileSectionTitle".localized
+        //self.title = "userProfileSectionTitle".localized
+        //self.navigationController?.navigationItem.title = "userProfileSectionTitle".localized
+        //tabBarItem.title = "userProfileSectionTitle".localized
+        //self.navigationController?.title = "userProfileSectionTitle".localized
         welcomeLabel.text = "welcomeLabel".localized
         userNameLabel.text = ""
         emailLabel.text = "emailLabel".localized
         userEmailLabel.text = ""
-        userCardLabel.text = "cardLabel".localized + ""
+        userCardLabel.text = "cardLabel".localized
+        userCardTextField.text = ""
+        userCardTransactionButton.setTitle("userCardTransactionButtonLabel".localized, for: .normal)
     }
     
     // MARK: User interaction
@@ -101,7 +111,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         })
     }
     
-    func doSomething() {
+    func tryRequestUserProfile() {
         let request = UserProfile.Something.Request()
         interactor?.doSomething(request: request)
     }

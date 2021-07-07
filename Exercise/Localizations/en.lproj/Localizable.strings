@@ -21,6 +21,7 @@
 "welcomeLabel" = "Welcome:";
 "emailLabel" = "Email:";
 "cardLabel" = "Card: ";
+"userCardTransactionButtonLabel" = "Transactions";
 
 // BillboardViewController
 "billboardSectionTitle" = "Billboard";

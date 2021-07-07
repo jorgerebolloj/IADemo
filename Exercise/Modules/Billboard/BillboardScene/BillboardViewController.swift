@@ -69,7 +69,7 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     
     fileprivate func setUI() {
         self.title = "billboardSectionTitle".localized
-        billboardNavigationBar.topItem?.title = "billboardSectionTitle".localized
+        //billboardNavigationBar.topItem?.title = "billboardSectionTitle".localized
         //loginButton.setTitle("loginButtonTitle".localized, for: .normal)
         //usernameTextField.placeholder = "usernamePlaceholderText".localized
         //passwordTextField.placeholder = "passwordPlaceholderText".localized

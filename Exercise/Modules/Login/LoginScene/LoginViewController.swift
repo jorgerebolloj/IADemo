@@ -62,6 +62,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         setUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // MARK: Outlets & variables
     
     @IBOutlet weak var usernameTextField: UITextField!
