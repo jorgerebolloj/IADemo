@@ -56,7 +56,7 @@ enum Login {
 }
 
 @objcMembers
-class LoginRealm: Object {
+class LoginRLM: Object {
     dynamic var username: String = ""
     dynamic var password: String? = nil
     

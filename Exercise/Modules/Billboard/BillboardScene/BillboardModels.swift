@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 enum Billboard {
     
@@ -92,4 +93,69 @@ enum Billboard {
             var cardNumber: String
         }
     }
+}
+
+// RealmSwift Entity
+
+@objcMembers
+final class BillboardRLM: Object {
+    let movies = List<MovieRLM>()
+    let routes = List<RouteRLM>()
+}
+
+@objcMembers
+final class MovieRLM: Object {
+    dynamic var rating: String = ""
+    let media = List<MediaRLM>()
+    let cast = List<CastRLM>()
+    dynamic var position: Int = 0
+    let categories = List<String>()
+    dynamic var genre: String = ""
+    dynamic var synopsis: String = ""
+    dynamic var length: String = ""
+    dynamic var releaseDate: String = ""
+    dynamic var distributor: String = ""
+    dynamic var id: Int = 0
+    dynamic var name: String = ""
+    dynamic var code: String = ""
+    dynamic var originalName: String = ""
+    
+    override static func primaryKey() -> String? {
+        return "position"
+    }
+}
+
+@objcMembers
+final class MediaRLM: Object {
+    dynamic var resource: String = ""
+    dynamic var type: String = ""
+    dynamic var code: String = ""
+    
+    override static func primaryKey() -> String? {
+        return "code"
+    }
+}
+
+@objcMembers
+final class CastRLM: Object {
+    dynamic var label: String = ""
+    let value = List<String>()
+}
+
+@objcMembers
+final class RouteRLM: Object {
+    dynamic var code: String = ""
+    let sizes = List<SizeRLM>()
+    
+    override static func primaryKey() -> String? {
+        return "code"
+    }
+}
+
+@objcMembers
+final class SizeRLM: Object {
+    dynamic var large: String? = nil
+    dynamic var medium: String? = nil
+    dynamic var small: String? = nil
+    dynamic var xLarge: String? = nil
 }

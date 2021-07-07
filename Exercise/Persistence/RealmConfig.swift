@@ -46,7 +46,7 @@ func cleanEmptyRealmFiles() {
         for realmFileName in realmFileNames {
             setDefaultRealm(realmFileName)
             let realm = try! Realm()
-            if realm.objects(LoginRealm.self).isEmpty {
+            if realm.objects(LoginRLM.self).isEmpty {
                 let files = ["\(realmFileName).realm", "\(realmFileName).realm.lock", "\(realmFileName).realm.management"]
                 
                 // Delete empty realm files
