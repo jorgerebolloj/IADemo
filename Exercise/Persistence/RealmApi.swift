@@ -92,6 +92,7 @@ class RealmApi {
     }
 }
 
+@objcMembers
 class RLMString: Object {
     dynamic var value: String = ""
     dynamic var id: String = ""

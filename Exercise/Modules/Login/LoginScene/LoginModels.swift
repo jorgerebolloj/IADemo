@@ -55,7 +55,12 @@ enum Login {
     }
 }
 
+@objcMembers
 class LoginRealm: Object {
-    dynamic var username: String? = nil
+    dynamic var username: String = ""
     dynamic var password: String? = nil
+    
+    override static func primaryKey() -> String? {
+        return "username"
+    }
 }
