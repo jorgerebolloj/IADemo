@@ -16,15 +16,19 @@
   
 ## Pods instalados
 	Alamofire (REST service)
-	CryptoSwift
-	RealmSwift
+	CryptoSwift (Ofuscación de datos sensibles)
+	RealmSwift (Percistencia de volumen alto de datos)
   
 ## Managers para centralización de gestión de configuraciones y desacoplamiento
 	Alamofire
 	UserDefaults
+	RealmSwift
   
 ## Persistencia simple
-	UserDefaults
+	UserDefaults (Login y perfil)
+
+## PErsistencia de alto volumen
+	RealmSwift (Cartelera)
   
 ## Arquitectura
 	VIP (Clean swift)
@@ -33,9 +37,12 @@
 	SOLID
 	
 ## Modelado de datos para óptimos flujo
-	DataModel Request
-	DataModel Response
-	DataModel View
+	DataModel RequestView (To interactor)
+	DataModel ResponseView (To presenter)
+	DataModel View (To view controller)
+	DataModel RequestWS (WS parameters)
+	DataModel ResponseWS (To worker)
+	DataModel Entities (Data persistence)
   
 ## Capa de servicios para centralización de gestión de configuraciones y desacoplamiento
 	Dominios
@@ -43,10 +50,10 @@
 	WebServicesAPI
 	
 ## Estructura limpia de vistas del proyecto
-	Desacoplamiento de vistas
+	Desacoplamiento de vistas y elementos visuales
 	
 ## Estructura limpia de ficheros del proyecto
-	Organización de grupos y ficheros
+	Organización y separación de grupos y ficheros
   
 ## Formulario de login
 	Placeholders en campos de texto
@@ -58,6 +65,9 @@
 ## Estructura UI de TabBar
 	Sección Perfil
 	Sección Cartelera
+	
 ## Vista de Perfil
 	Pintado de datos de usuario
 	Workflow para transacciones de tarjeta (servicio no disponible)
+
+## Vista de Cartelera
