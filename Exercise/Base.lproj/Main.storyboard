@@ -94,14 +94,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2pf-c8-9qb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="200" id="CoZ-Z2-KzL"/>
-                                                    </constraints>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2pf-c8-9qb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAu-4M-VBe">
-                                                    <rect key="frame" x="0.0" y="120" width="100" height="50"/>
+                                                    <rect key="frame" x="0.0" y="140" width="100" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="IxO-7s-vth"/>
                                                         <constraint firstAttribute="width" constant="100" id="R0E-NL-dOe"/>
@@ -112,12 +109,13 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="2pf-c8-9qb" firstAttribute="leading" secondItem="380-j1-mzs" secondAttribute="leading" id="7XC-gk-w7f"/>
-                                                <constraint firstAttribute="bottom" secondItem="xAu-4M-VBe" secondAttribute="bottom" constant="30" id="EWA-Zl-cJg"/>
+                                                <constraint firstItem="xAu-4M-VBe" firstAttribute="top" secondItem="2pf-c8-9qb" secondAttribute="bottom" constant="10" id="8XX-Me-dDY"/>
+                                                <constraint firstAttribute="bottom" secondItem="xAu-4M-VBe" secondAttribute="bottom" constant="10" id="EWA-Zl-cJg"/>
+                                                <constraint firstItem="2pf-c8-9qb" firstAttribute="leading" secondItem="xAu-4M-VBe" secondAttribute="leading" id="KsB-2d-IlJ"/>
                                                 <constraint firstItem="xAu-4M-VBe" firstAttribute="leading" secondItem="380-j1-mzs" secondAttribute="leading" id="Ofu-Qp-uGa"/>
-                                                <constraint firstItem="2pf-c8-9qb" firstAttribute="top" secondItem="380-j1-mzs" secondAttribute="top" id="XG1-br-Yl3"/>
+                                                <constraint firstItem="2pf-c8-9qb" firstAttribute="trailing" secondItem="xAu-4M-VBe" secondAttribute="trailing" id="e0X-YM-Q3d"/>
                                                 <constraint firstAttribute="trailing" secondItem="xAu-4M-VBe" secondAttribute="trailing" id="eE9-dU-CYj"/>
-                                                <constraint firstAttribute="trailing" secondItem="2pf-c8-9qb" secondAttribute="trailing" id="g8p-xN-Ipu"/>
+                                                <constraint firstItem="2pf-c8-9qb" firstAttribute="top" secondItem="380-j1-mzs" secondAttribute="top" id="rdj-qK-SKc"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>

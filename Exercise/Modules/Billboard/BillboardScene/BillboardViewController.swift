@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol BillboardDisplayLogic: class {
     func displayBillboardSuccess(with viewModel: [Billboard.Info.ViewModel]?)
@@ -133,6 +134,8 @@ extension BillboardViewController: UICollectionViewDataSource {
         //let flickrPhoto = photo(for: indexPath)
         //cell.backgroundColor = .white
         cell.movieTitleLabel.text = moviesModel?[indexPath.row].name
+        let url = (moviesModel?[indexPath.row].poster) ?? ""
+        cell.moviePhotoImageView.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "imageMockUp.png"))
         
         //cell.imageView.image = flickrPhoto.thumbnail
         
