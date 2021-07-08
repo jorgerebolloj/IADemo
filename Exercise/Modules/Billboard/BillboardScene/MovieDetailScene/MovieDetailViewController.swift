@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 protocol MovieDetailDisplayLogic: class {
     func displaySomething(viewModel: MovieDetail.Something.ViewModel)
@@ -58,17 +60,34 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        setUI()
     }
     
-    // MARK: Do something
+    override func viewDidAppear(_ animated: Bool) {
+        let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+        let player = AVPlayer(url: videoURL!)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.view.bounds
+        self.view.layer.addSublayer(playerLayer)
+        player.play()
+    }
     
-    //@IBOutlet weak var nameTextField: UITextField!
+    // MARK: Outlets & variables
+    
+    // MARK: UI
+    
+    fileprivate func setUI() {
+        self.title = "movieDetailSectionTitle".localized
+    }
+    
+    // MARK: User interaction
     
     func doSomething() {
         let request = MovieDetail.Something.Request()
         interactor?.doSomething(request: request)
     }
+    
+    // MARK: User response
     
     func displaySomething(viewModel: MovieDetail.Something.ViewModel) {
         //nameTextField.text = viewModel.name

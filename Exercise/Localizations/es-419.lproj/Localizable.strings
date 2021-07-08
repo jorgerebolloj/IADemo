@@ -26,3 +26,6 @@
 
 // BillboardViewController
 "billboardSectionTitle" = "Cartelera";
+
+// MovieDetailViewController
+"movieDetailSectionTitle" = "Detalle de película";
