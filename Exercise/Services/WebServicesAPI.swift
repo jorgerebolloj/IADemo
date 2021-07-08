@@ -8,6 +8,7 @@
 import Foundation
 
 class WebServicesAPI {
+    var worker: BillboardWorker?
     
     // MARK: - Login Auth
     
@@ -219,7 +220,8 @@ class WebServicesAPI {
             if (response != nil) {
                 do {
                     let decodedData = try JSONDecoder().decode(Billboard.Info.ResponseWSModel.self, from: response!)
-                    self.storeBillboardResponseData(responseData: decodedData)
+                    self.worker = BillboardWorker()
+                    self.worker?.storeBillboardResponseData(responseData: decodedData)
                     completion(true, nil)
                 } catch let error as NSError {
                     print("Error from login\(error)")
@@ -230,8 +232,4 @@ class WebServicesAPI {
             }
         }
     }
-    
-    // MARK: Store response data
-    
-    private func storeBillboardResponseData(responseData decodedData: Billboard.Info.ResponseWSModel) {}
 }

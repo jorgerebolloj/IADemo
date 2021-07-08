@@ -24,7 +24,7 @@ enum Billboard {
             var rating: String
             var media: [Media]
             var cast: [Cast]
-            var cinemas: [String]?
+            var cinemas: [String]? = nil
             var position: Int
             var categories: [String]
             var genre: String
@@ -73,10 +73,10 @@ enum Billboard {
         }
         
         struct Size: Codable {
-            var large: String?
-            var medium: String?
-            var small: String?
-            var xLarge: String?
+            var large: String? = nil
+            var medium: String? = nil
+            var small: String? = nil
+            var xLarge: String? = nil
             
             enum CodingKeys: String, CodingKey {
                 case large = "large"
@@ -99,17 +99,22 @@ enum Billboard {
 
 @objcMembers
 final class BillboardRLM: Object {
-    let movies = List<MovieRLM>()
-    let routes = List<RouteRLM>()
+    dynamic var id: String = ""
+    var movies = List<MovieRLM>()
+    var routes = List<RouteRLM>()
+    
+    internal override class func primaryKey() -> String {
+        return "id"
+    }
 }
 
 @objcMembers
 final class MovieRLM: Object {
     dynamic var rating: String = ""
-    let media = List<MediaRLM>()
-    let cast = List<CastRLM>()
+    var media = List<MediaRLM>()
+    var cast = List<CastRLM>()
     dynamic var position: Int = 0
-    let categories = List<String>()
+    var categories = List<String>()
     dynamic var genre: String = ""
     dynamic var synopsis: String = ""
     dynamic var length: String = ""
@@ -120,7 +125,25 @@ final class MovieRLM: Object {
     dynamic var code: String = ""
     dynamic var originalName: String = ""
     
-    override static func primaryKey() -> String? {
+    private enum CodingKeys: String, CodingKey {
+        case rating = "rating"
+        case media = "media"
+        case cast = "cast"
+        case cinemas = "cinemas"
+        case position = "position"
+        case categories = "categories"
+        case genre = "genre"
+        case synopsis = "synopsis"
+        case length = "length"
+        case releaseDate = "release_date"
+        case distributor = "distributor"
+        case id = "id"
+        case name = "name"
+        case code = "code"
+        case originalName = "original_name"
+    }
+    
+    internal override static func primaryKey() -> String? {
         return "position"
     }
 }
@@ -131,7 +154,7 @@ final class MediaRLM: Object {
     dynamic var type: String = ""
     dynamic var code: String = ""
     
-    override static func primaryKey() -> String? {
+    internal override static func primaryKey() -> String? {
         return "code"
     }
 }
@@ -139,23 +162,39 @@ final class MediaRLM: Object {
 @objcMembers
 final class CastRLM: Object {
     dynamic var label: String = ""
-    let value = List<String>()
+    var value = List<String>()
+    
+    internal override static func primaryKey() -> String? {
+        return "label"
+    }
 }
 
 @objcMembers
 final class RouteRLM: Object {
     dynamic var code: String = ""
-    let sizes = List<SizeRLM>()
+    var sizes = List<SizeRLM>()
     
-    override static func primaryKey() -> String? {
+    internal override static func primaryKey() -> String? {
         return "code"
     }
 }
 
 @objcMembers
 final class SizeRLM: Object {
+    dynamic var id: String = ""
     dynamic var large: String? = nil
     dynamic var medium: String? = nil
     dynamic var small: String? = nil
     dynamic var xLarge: String? = nil
+    
+    private enum CodingKeys: String, CodingKey {
+        case large = "large"
+        case medium = "medium"
+        case small = "small"
+        case xLarge = "x-large"
+    }
+    
+    internal override class func primaryKey() -> String {
+        return "id"
+    }
 }

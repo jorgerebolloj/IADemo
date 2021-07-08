@@ -107,7 +107,6 @@ class RLMString: Object {
     internal override class func primaryKey() -> String {
         return "id"
     }
-    
 }
 
 func == (lhs: RLMString, rhs: RLMString) -> Bool {
