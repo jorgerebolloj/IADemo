@@ -73,4 +73,7 @@
 
 ## Vista de Cartelera
 	Pintado de posters de películas y nombre
-	Workflow para detalle de película
+	Flow para mostrar detalle de película
+	
+## Vista de Detalle de película
+	Modelado de datos para la vista
