@@ -13,17 +13,23 @@ class BillboardWorker {
     
     // MARK: Worker Tasks
     
-    func attemptBillboardInfo(completion: @escaping ((Bool?, String?) -> Void)) {
+    func attemptBillboardInfo(completion: @escaping ((Bool?, String?, Results<Object>?) -> Void)) {
         DispatchQueue.global(qos: .background).async {
             WebServicesAPI().getRequestBillboardInfo() {
                 succesful, error in
                 if !succesful! {
-                    completion(false, error?.localizedDescription)
+                    completion(false, error?.localizedDescription, nil)
                 } else {
-                    completion(true, nil)
+                    let movies = self.queryMovieData()
+                    completion(true, nil, movies)
                 }
             }
         }
+    }
+    
+    func queryMovieData() -> Results<Object>? {
+        let movies = RealmApi().allObjects(fromObject: MovieRLM.self)
+        return movies
     }
     
     // MARK: Store response data
@@ -34,15 +40,14 @@ class BillboardWorker {
                 let billboardEntity = BillboardRLM()
                 let moviesEntityList = List<MovieRLM>()
                 let routesEntityList = List<RouteRLM>()
-                let mediaEntityList = List<MediaRLM>()
-                let castEntityList = List<CastRLM>()
-                let sizesEntityList = List<SizeRLM>()
                 
                 let billboardData = decodedData
                 let moviesData = billboardData.movies
                 let routesData = billboardData.routes
                 
                 for movie in moviesData {
+                    let mediaEntityList = List<MediaRLM>()
+                    let castEntityList = List<CastRLM>()
                     let ratingData = movie.rating
                     let mediaData = movie.media
                     let castData = movie.cast
@@ -104,6 +109,7 @@ class BillboardWorker {
                 var routeId = 0
                 for route in routesData {
                     routeId += 1
+                    let sizesEntityList = List<SizeRLM>()
                     let codeData = route.code
                     let sizesData = route.sizes
                     let sizesEntityData = SizeRLM()

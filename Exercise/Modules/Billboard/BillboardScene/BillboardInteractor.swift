@@ -26,11 +26,11 @@ class BillboardInteractor: BillboardBusinessLogic, BillboardDataStore {
     func tryRequestBillboard() {
         worker = BillboardWorker()
         worker?.attemptBillboardInfo() {
-            succesful, error in
+            succesful, error, model in
                 if !succesful! {
                     self.presenter?.presentBillboardError(message: error)
                 } else {
-                    self.presenter?.presentBillboardSuccess()
+                    self.presenter?.presentBillboardSuccess(moviesModel: model)
                 }
         }
     }

@@ -87,10 +87,8 @@ enum Billboard {
         }
         
         struct ViewModel {
-            var email: String
             var name: String
-            var profilePicture: String
-            var cardNumber: String
+            var poster: String
         }
     }
 }

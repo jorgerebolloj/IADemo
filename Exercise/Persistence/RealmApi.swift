@@ -90,6 +90,12 @@ class RealmApi {
         
         return results
     }
+    
+    func allObjects(fromObject entity: AnyClass) -> Results<Object>? {
+        guard let classType = entity as? Object.Type else  { return nil }
+        let objects = realm.objects(classType)
+        return objects
+    }
 }
 
 @objcMembers
@@ -111,4 +117,17 @@ class RLMString: Object {
 
 func == (lhs: RLMString, rhs: RLMString) -> Bool {
     return lhs.value == rhs.value
+}
+
+extension Results {
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for i in 0 ..< count {
+            if let result = self[i] as? T {
+                array.append(result)
+            }
+        }
+
+        return array
+    }
 }

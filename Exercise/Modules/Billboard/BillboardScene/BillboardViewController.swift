@@ -9,7 +9,7 @@
 import UIKit
 
 protocol BillboardDisplayLogic: class {
-    func displayBillboardSuccess(with viewModel: UserProfile.Info.ViewModel)
+    func displayBillboardSuccess(with viewModel: [Billboard.Info.ViewModel]?)
     func displayBillboardError(viewModel: AlertViewController.ErrorViewModel)
 }
 
@@ -59,13 +59,24 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        moviesModel = [Billboard.Info.ViewModel]()
         setUI()
         tryRequestBillboard()
     }
   
     // MARK: Outlets & variables
     
-    var loadingViewController: LoadingViewController?
+    var moviesModel: [Billboard.Info.ViewModel]?
+    
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
+    private let reuseIdentifier = "MovieCollectionCell"
+    private let sectionInsets = UIEdgeInsets(
+        top: 20.0,
+        left: 20.0,
+        bottom: 20.0,
+        right: 20.0)
+    private let itemsPerRow: CGFloat = 3
+
     
     // MARK: UI
     
@@ -82,7 +93,9 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
   
     // MARK: User response
     
-    func displayBillboardSuccess(with viewModel: UserProfile.Info.ViewModel) {
+    func displayBillboardSuccess(with viewModel: [Billboard.Info.ViewModel]?) {
+        moviesModel = viewModel
+        moviesCollectionView.reloadData()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
     }
     
@@ -98,5 +111,58 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
         alertView.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         alertView.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         self.present(alertView, animated: true, completion: nil)
+    }
+}
+
+// MARK: UICollectionViewDataSource
+
+extension BillboardViewController: UICollectionViewDataSource {
+  // 1
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+  
+  // 2
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return moviesModel?.count ?? 0
+    }
+  
+  // 3
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      // 1
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MoviePhotoCell
+      // 2
+        //let flickrPhoto = photo(for: indexPath)
+        //cell.backgroundColor = .white
+        cell.movieTitleLabel.text = moviesModel?[indexPath.row].name
+      // 3
+        //cell.imageView.image = flickrPhoto.thumbnail
+        
+        return cell
+    }
+
+}
+
+// MARK: Collection View Flow Layout Delegate
+
+extension BillboardViewController: UICollectionViewDelegateFlowLayout {
+  // 1
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    // 2
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+  
+  // 3
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+  
+  // 4
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }

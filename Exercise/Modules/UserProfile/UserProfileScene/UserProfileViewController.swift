@@ -78,8 +78,6 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         tryRequestUserTransactions()
     }
     
-    var loadingViewController: LoadingViewController?
-    
     // MARK: UI
     
     fileprivate func setUI() {

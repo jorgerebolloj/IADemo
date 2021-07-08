@@ -12,6 +12,7 @@
 		BD7540AA2BC44602AA7EF6B2 /* Pods_Exercise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C916FA549B1389CB95A40A2 /* Pods_Exercise.framework */; };
 		EA4BB15C2695A3C9008EFDE5 /* RealmApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */; };
 		EA4BB1642695A3EE008EFDE5 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */; };
+		EA4BB17C2696EBBB008EFDE5 /* MoviePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB17B2696EBBB008EFDE5 /* MoviePhotoCell.swift */; };
 		EA97CAC52693F4A100547D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CAC42693F4A100547D4C /* AppDelegate.swift */; };
 		EA97CAC72693F4A100547D4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CAC62693F4A100547D4C /* SceneDelegate.swift */; };
 		EA97CACC2693F4A100547D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA97CACA2693F4A100547D4C /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		E7991C81218792AF6CBAF94B /* Pods_Exercise_ExerciseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Exercise_ExerciseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmApi.swift; sourceTree = "<group>"; };
 		EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		EA4BB17B2696EBBB008EFDE5 /* MoviePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePhotoCell.swift; sourceTree = "<group>"; };
 		EA97CAC12693F4A100547D4C /* Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA97CAC42693F4A100547D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA97CAC62693F4A100547D4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,14 @@
 				EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		EA4BB17A2696EBA4008EFDE5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EA4BB17B2696EBBB008EFDE5 /* MoviePhotoCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		EA97CAB82693F4A100547D4C = {
@@ -371,6 +381,7 @@
 		EAF93BE32694A315000F90C8 /* BillboardScene */ = {
 			isa = PBXGroup;
 			children = (
+				EA4BB17A2696EBA4008EFDE5 /* Components */,
 				EAF93BE42694A33C000F90C8 /* BillboardPresenter.swift */,
 				EAF93BE52694A33C000F90C8 /* BillboardWorker.swift */,
 				EAF93BE62694A33C000F90C8 /* BillboardRouter.swift */,
@@ -649,6 +660,7 @@
 				EA4BB15C2695A3C9008EFDE5 /* RealmApi.swift in Sources */,
 				EAF93BD92694A26B000F90C8 /* UserProfilePresenter.swift in Sources */,
 				EA4BB1642695A3EE008EFDE5 /* RealmConfig.swift in Sources */,
+				EA4BB17C2696EBBB008EFDE5 /* MoviePhotoCell.swift in Sources */,
 				EAF93BDE2694A26B000F90C8 /* UserProfileInteractor.swift in Sources */,
 				EAF93BDA2694A26B000F90C8 /* UserProfileWorker.swift in Sources */,
 				EAF93BB526946AE1000F90C8 /* String.swift in Sources */,

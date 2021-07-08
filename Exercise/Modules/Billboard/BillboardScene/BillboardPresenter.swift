@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol BillboardPresentationLogic {
-    func presentBillboardSuccess()
+    func presentBillboardSuccess(moviesModel: Results<Object>?)
     func presentBillboardError(message: String?)
 }
 
@@ -18,21 +19,29 @@ class BillboardPresenter: BillboardPresentationLogic {
     
     // MARK: Presenter paths
     
-    func presentBillboardSuccess() {
-        guard let email = UserDefaults.standard.string(forKey: "email") else { return }
-        guard let firstName = UserDefaults.standard.string(forKey: "firstName") else { return }
-        guard let lastName = UserDefaults.standard.string(forKey: "lastName") else { return }
-        guard let profilePicture = UserDefaults.standard.string(forKey: "profilePicture") else { return }
-        guard let cardNumber = UserDefaults.standard.string(forKey: "cardNumber") else { return }
-        let name = firstName + " " + lastName
-        let viewModel = UserProfile.Info.ViewModel(email: email, name: name,profilePicture: profilePicture, cardNumber: cardNumber)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-            self.viewController?.displayBillboardSuccess(with: viewModel)
+    func presentBillboardSuccess(moviesModel: Results<Object>?) {
+        guard let movies = moviesModel?.toArray(ofType: MovieRLM.self) else { return }
+        var moviesModelDecorated = [Billboard.Info.ViewModel]()
+        for movie in movies {
+            let movieName = movie.originalName
+            var moviePoster = ""
+            let movieMedias = movie.media
+            for movieMedia in movieMedias {
+                let movieMediaCode = movieMedia.code
+                if movieMediaCode == "poster" {
+                    moviePoster = movieMedia.resource
+                }
+            }
+            let movieModel = Billboard.Info.ViewModel(name: movieName, poster: moviePoster)
+            moviesModelDecorated.append(movieModel)
+        }
+        DispatchQueue.main.async {
+            self.viewController?.displayBillboardSuccess(with: moviesModelDecorated)
         }
     }
     
     func presentBillboardError(message: String?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+        DispatchQueue.main.async {
             let viewModel = AlertViewController.ErrorViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: message ?? "null")
             self.viewController?.displayBillboardError(viewModel: viewModel)
         }
