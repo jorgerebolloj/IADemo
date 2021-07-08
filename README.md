@@ -70,10 +70,14 @@
 ## Vista de Perfil
 	Pintado de datos de usuario
 	Workflow para transacciones de tarjeta (servicio no disponible)
+	Animación de loader
+	Feedback a usuario de resultado de operación con alert view
 
 ## Vista de Cartelera
 	Pintado de posters de películas y nombre
 	Flow para mostrar detalle de película
+	Animación de loader
+	Feedback a usuario de resultado de operación con alert view
 	
 ## Vista de Detalle de película
 	Modelado de datos para la vista
