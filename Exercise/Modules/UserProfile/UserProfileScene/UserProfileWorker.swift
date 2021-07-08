@@ -17,7 +17,7 @@ class UserProfileWorker {
     // User Profile
     
     func attemptUserProfileInfo(completion: @escaping ((Bool?, String?) -> Void)) {
-        queue.async {
+        DispatchQueue.global(qos: .userInitiated).sync {
             WebServicesAPI().getRequestUserProfileInfo() {
                 succesful, error in
                 if !succesful! {
@@ -32,8 +32,7 @@ class UserProfileWorker {
     // User Cards
     
     func attemptUserTransactionsInfo(requestModel: UserCard.Info.RequestModel, completion: @escaping ((Bool?, String?) -> Void)) {
-        let queue = DispatchQueue(label: "userTransaction")
-        queue.async {
+        DispatchQueue.global(qos: .userInitiated).sync {
             WebServicesAPI().getRequestUserTransactionsInfo(requestModel: requestModel) {
                 succesful, error in
                 if !succesful! {
@@ -48,7 +47,6 @@ class UserProfileWorker {
     // MARK: Store response data
     
     func storeUserProfileResponseData(responseData decodedData: UserProfile.Info.ResponseWSModel) {
-        queue.async {
             autoreleasepool {
                 let userDefaultsEmailKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "email", value: decodedData.email)
                 let userDefaultsFirstNameKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "firstName", value: decodedData.firstName)
@@ -65,6 +63,5 @@ class UserProfileWorker {
                     userDefaultsCardNumberKeyVal]
                 UserDefaultsHelper().setUserDefaultsKeyVals(userDefaultsKeysVals: userDefaultsKeysVals)
             }
-        }
     }
 }

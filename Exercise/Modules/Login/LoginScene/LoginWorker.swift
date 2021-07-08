@@ -10,8 +10,6 @@ import UIKit
 
 class LoginWorker {
     
-    let queue = DispatchQueue(label: "login")
-    
     // MARK: Worker Tasks
     
     func attemptLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?, String?) -> Void)) {
@@ -28,7 +26,7 @@ class LoginWorker {
             return
         }
         
-        queue.async {
+        DispatchQueue.global(qos: .userInitiated).sync {
             WebServicesAPI().getRequestLogin(requestModel: requestModel) {
                 succesful, error in
                 if !succesful! {

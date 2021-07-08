@@ -63,10 +63,6 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
         setUI()
         tryRequestBillboard()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        moviesCollectionView.reloadData()
-    }
   
     // MARK: Outlets & variables
     

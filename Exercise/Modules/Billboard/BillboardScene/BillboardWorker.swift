@@ -11,17 +11,17 @@ import RealmSwift
 
 class BillboardWorker {
     
-    
-    
     // MARK: Worker Tasks
     
     func attemptBillboardInfo(completion: @escaping ((Bool?, String?) -> Void)) {
-        WebServicesAPI().getRequestBillboardInfo() {
-            succesful, error in
-            if !succesful! {
-                completion(false, error?.localizedDescription)
-            } else {
-                completion(true, nil)
+        DispatchQueue.global(qos: .userInitiated).sync {
+            WebServicesAPI().getRequestBillboardInfo() {
+                succesful, error in
+                if !succesful! {
+                    completion(false, error?.localizedDescription)
+                } else {
+                    completion(true, nil)
+                }
             }
         }
     }
@@ -35,13 +35,13 @@ class BillboardWorker {
         autoreleasepool {
             let routesObjects = RealmApi().allObjects(fromObject: RouteRLM.self)
             guard let routes = routesObjects?.toArray(ofType: RouteRLM.self) else { return }
+            var poster = ""
+            var backgroundSynopsis = ""
+            var trailerMp4 = ""
+            var posterHorizontal = ""
+            var ribbon = ""
             for route in routes {
                 let code = route.code
-                var poster = ""
-                var backgroundSynopsis = ""
-                var trailerMp4 = ""
-                var posterHorizontal = ""
-                var ribbon = ""
                 if code == "poster" {
                     let sizes = route.sizes
                     for size in sizes {
@@ -72,21 +72,21 @@ class BillboardWorker {
                         ribbon = size.medium ?? ""
                     }
                 }
-                let moviesModelDecorated = Billboard.Info.RoutesModel(poster: poster, backgroundSynopsis: backgroundSynopsis, trailerMp4: trailerMp4, posterHorizontal: posterHorizontal, ribbon: ribbon)
-                
-                let userDefaultsPosterURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "posterURL", value: moviesModelDecorated.poster)
-                let userDefaultsBackgroundSynopsisURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "backgroundSynopsisURL", value: moviesModelDecorated.backgroundSynopsis)
-                let userDefaultsTrailerMp4URLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "trailerMp4URL", value: moviesModelDecorated.trailerMp4)
-                let userDefaultsPosterHorizontalURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "posterHorizontalURL", value: moviesModelDecorated.posterHorizontal)
-                let userDefaultsRibbonURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "ribbonURL", value: moviesModelDecorated.ribbon)
-                let userDefaultsKeysVals: [UserDefaultsKeyVal] = [
-                    userDefaultsPosterURLKeyVal,
-                    userDefaultsBackgroundSynopsisURLKeyVal,
-                    userDefaultsTrailerMp4URLKeyVal,
-                    userDefaultsPosterHorizontalURLKeyVal,
-                    userDefaultsRibbonURLKeyVal]
-                UserDefaultsHelper().setUserDefaultsKeyVals(userDefaultsKeysVals: userDefaultsKeysVals)
             }
+            let moviesModelDecorated = Billboard.Info.RoutesModel(poster: poster, backgroundSynopsis: backgroundSynopsis, trailerMp4: trailerMp4, posterHorizontal: posterHorizontal, ribbon: ribbon)
+            
+            let userDefaultsPosterURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "posterURL", value: moviesModelDecorated.poster)
+            let userDefaultsBackgroundSynopsisURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "backgroundSynopsisURL", value: moviesModelDecorated.backgroundSynopsis)
+            let userDefaultsTrailerMp4URLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "trailerMp4URL", value: moviesModelDecorated.trailerMp4)
+            let userDefaultsPosterHorizontalURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "posterHorizontalURL", value: moviesModelDecorated.posterHorizontal)
+            let userDefaultsRibbonURLKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "ribbonURL", value: moviesModelDecorated.ribbon)
+            let userDefaultsKeysVals: [UserDefaultsKeyVal] = [
+                userDefaultsPosterURLKeyVal,
+                userDefaultsBackgroundSynopsisURLKeyVal,
+                userDefaultsTrailerMp4URLKeyVal,
+                userDefaultsPosterHorizontalURLKeyVal,
+                userDefaultsRibbonURLKeyVal]
+            UserDefaultsHelper().setUserDefaultsKeyVals(userDefaultsKeysVals: userDefaultsKeysVals)
         }
     }
     
