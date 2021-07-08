@@ -18,6 +18,7 @@
 	Alamofire (REST service)
 	CryptoSwift (Ofuscación de datos sensibles)
 	RealmSwift (Percistencia de volumen alto de datos)
+	SDWebImage (Manejo de descarga de imagenes remotas)
   
 ## Managers para centralización de gestión de configuraciones y desacoplamiento
 	Alamofire
@@ -27,7 +28,7 @@
 ## Persistencia simple
 	UserDefaults (Login y perfil)
 
-## PErsistencia de alto volumen
+## Persistencia de alto volumen
 	RealmSwift (Cartelera)
   
 ## Arquitectura
@@ -71,3 +72,5 @@
 	Workflow para transacciones de tarjeta (servicio no disponible)
 
 ## Vista de Cartelera
+	Pintado de posters de películas y nombre
+	Workflow para detalle de película
