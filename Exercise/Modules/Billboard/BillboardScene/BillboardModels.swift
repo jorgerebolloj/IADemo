@@ -90,6 +90,14 @@ enum Billboard {
             var name: String
             var poster: String
         }
+        
+        struct RoutesModel {
+            var poster: String
+            var backgroundSynopsis: String
+            var trailerMp4: String
+            var posterHorizontal: String
+            var ribbon: String
+        }
     }
 }
 
@@ -148,22 +156,24 @@ final class MovieRLM: Object {
 
 @objcMembers
 final class MediaRLM: Object {
+    dynamic var id: String = ""
     dynamic var resource: String = ""
     dynamic var type: String = ""
     dynamic var code: String = ""
     
     internal override static func primaryKey() -> String? {
-        return "code"
+        return "id"
     }
 }
 
 @objcMembers
 final class CastRLM: Object {
+    dynamic var id: String = ""
     dynamic var label: String = ""
     var value = List<String>()
     
     internal override static func primaryKey() -> String? {
-        return "label"
+        return "id"
     }
 }
 

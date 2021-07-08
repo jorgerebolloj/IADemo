@@ -22,14 +22,15 @@ class BillboardPresenter: BillboardPresentationLogic {
     func presentBillboardSuccess(moviesModel: Results<Object>?) {
         guard let movies = moviesModel?.toArray(ofType: MovieRLM.self) else { return }
         var moviesModelDecorated = [Billboard.Info.ViewModel]()
+        guard let posterURL = UserDefaults.standard.string(forKey: "posterURL") else { return }
         for movie in movies {
-            let movieName = movie.originalName
+            let movieName = movie.name
             var moviePoster = ""
             let movieMedias = movie.media
             for movieMedia in movieMedias {
                 let movieMediaCode = movieMedia.code
                 if movieMediaCode == "poster" {
-                    moviePoster = movieMedia.resource
+                    moviePoster = posterURL + movieMedia.resource
                 }
             }
             let movieModel = Billboard.Info.ViewModel(name: movieName, poster: moviePoster)

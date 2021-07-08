@@ -8,7 +8,8 @@
 import Foundation
 
 class WebServicesAPI {
-    var worker: BillboardWorker?
+    var billboardWorker: BillboardWorker?
+    var userProfileWorker: UserProfileWorker?
     
     // MARK: - Login Auth
     
@@ -105,7 +106,8 @@ class WebServicesAPI {
             if (response != nil) {
                 do {
                     let decodedData = try JSONDecoder().decode(UserProfile.Info.ResponseWSModel.self, from: response!)
-                    self.storeUserProfileResponseData(responseData: decodedData)
+                    self.userProfileWorker = UserProfileWorker()
+                    self.userProfileWorker?.storeUserProfileResponseData(responseData: decodedData)
                     completion(true, nil)
                 } catch let error as NSError {
                     print("Error from login\(error)")
@@ -115,25 +117,6 @@ class WebServicesAPI {
                 completion(false, NSError(domain: "LibraryApi", code: error?.code ?? -2, userInfo: error?.userInfo))
             }
         }
-    }
-    
-    // MARK: Store response data
-    
-    private func storeUserProfileResponseData(responseData decodedData: UserProfile.Info.ResponseWSModel) {
-        let userDefaultsEmailKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "email", value: decodedData.email)
-        let userDefaultsFirstNameKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "firstName", value: decodedData.firstName)
-        let userDefaultsLastNameKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "lastName", value: decodedData.lastName)
-        let userDefaultsPhoneNumberKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "phoneNumber", value: decodedData.phoneNumber)
-        let userDefaultsProfilePictureKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "profilePicture", value: decodedData.profilePicture)
-        let userDefaultsCardNumberKeyVal: UserDefaultsKeyVal = UserDefaultsKeyVal(key: "cardNumber", value: decodedData.cardNumber)
-        let userDefaultsKeysVals: [UserDefaultsKeyVal] = [
-            userDefaultsEmailKeyVal,
-            userDefaultsFirstNameKeyVal,
-            userDefaultsLastNameKeyVal,
-            userDefaultsPhoneNumberKeyVal,
-            userDefaultsProfilePictureKeyVal,
-            userDefaultsCardNumberKeyVal]
-        UserDefaultsHelper().setUserDefaultsKeyVals(userDefaultsKeysVals: userDefaultsKeysVals)
     }
     
     // MARK: - User Transactions Info
@@ -220,8 +203,8 @@ class WebServicesAPI {
             if (response != nil) {
                 do {
                     let decodedData = try JSONDecoder().decode(Billboard.Info.ResponseWSModel.self, from: response!)
-                    self.worker = BillboardWorker()
-                    self.worker?.storeBillboardResponseData(responseData: decodedData)
+                    self.billboardWorker = BillboardWorker()
+                    self.billboardWorker?.storeBillboardResponseData(responseData: decodedData)
                     completion(true, nil)
                 } catch let error as NSError {
                     print("Error from login\(error)")
