@@ -13,6 +13,12 @@
 		EA4BB15C2695A3C9008EFDE5 /* RealmApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */; };
 		EA4BB1642695A3EE008EFDE5 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */; };
 		EA4BB17C2696EBBB008EFDE5 /* MoviePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB17B2696EBBB008EFDE5 /* MoviePhotoCell.swift */; };
+		EA4BB1A426973DD2008EFDE5 /* MovieDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB19E26973DD2008EFDE5 /* MovieDetailPresenter.swift */; };
+		EA4BB1A526973DD2008EFDE5 /* MovieDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB19F26973DD2008EFDE5 /* MovieDetailWorker.swift */; };
+		EA4BB1A626973DD2008EFDE5 /* MovieDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1A026973DD2008EFDE5 /* MovieDetailRouter.swift */; };
+		EA4BB1A726973DD2008EFDE5 /* MovieDetailModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1A126973DD2008EFDE5 /* MovieDetailModels.swift */; };
+		EA4BB1A826973DD2008EFDE5 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1A226973DD2008EFDE5 /* MovieDetailViewController.swift */; };
+		EA4BB1A926973DD2008EFDE5 /* MovieDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4BB1A326973DD2008EFDE5 /* MovieDetailInteractor.swift */; };
 		EA97CAC52693F4A100547D4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CAC42693F4A100547D4C /* AppDelegate.swift */; };
 		EA97CAC72693F4A100547D4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CAC62693F4A100547D4C /* SceneDelegate.swift */; };
 		EA97CACC2693F4A100547D4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA97CACA2693F4A100547D4C /* Main.storyboard */; };
@@ -79,6 +85,12 @@
 		EA4BB15B2695A3C9008EFDE5 /* RealmApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmApi.swift; sourceTree = "<group>"; };
 		EA4BB1632695A3EE008EFDE5 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		EA4BB17B2696EBBB008EFDE5 /* MoviePhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePhotoCell.swift; sourceTree = "<group>"; };
+		EA4BB19E26973DD2008EFDE5 /* MovieDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailPresenter.swift; sourceTree = "<group>"; };
+		EA4BB19F26973DD2008EFDE5 /* MovieDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailWorker.swift; sourceTree = "<group>"; };
+		EA4BB1A026973DD2008EFDE5 /* MovieDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRouter.swift; sourceTree = "<group>"; };
+		EA4BB1A126973DD2008EFDE5 /* MovieDetailModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModels.swift; sourceTree = "<group>"; };
+		EA4BB1A226973DD2008EFDE5 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		EA4BB1A326973DD2008EFDE5 /* MovieDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInteractor.swift; sourceTree = "<group>"; };
 		EA97CAC12693F4A100547D4C /* Exercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Exercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA97CAC42693F4A100547D4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA97CAC62693F4A100547D4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +206,19 @@
 				EA4BB17B2696EBBB008EFDE5 /* MoviePhotoCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		EA4BB19D26973D95008EFDE5 /* MovieDetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				EA4BB19E26973DD2008EFDE5 /* MovieDetailPresenter.swift */,
+				EA4BB19F26973DD2008EFDE5 /* MovieDetailWorker.swift */,
+				EA4BB1A026973DD2008EFDE5 /* MovieDetailRouter.swift */,
+				EA4BB1A126973DD2008EFDE5 /* MovieDetailModels.swift */,
+				EA4BB1A226973DD2008EFDE5 /* MovieDetailViewController.swift */,
+				EA4BB1A326973DD2008EFDE5 /* MovieDetailInteractor.swift */,
+			);
+			path = MovieDetailScene;
 			sourceTree = "<group>";
 		};
 		EA97CAB82693F4A100547D4C = {
@@ -381,6 +406,7 @@
 		EAF93BE32694A315000F90C8 /* BillboardScene */ = {
 			isa = PBXGroup;
 			children = (
+				EA4BB19D26973D95008EFDE5 /* MovieDetailScene */,
 				EA4BB17A2696EBA4008EFDE5 /* Components */,
 				EAF93BE42694A33C000F90C8 /* BillboardPresenter.swift */,
 				EAF93BE52694A33C000F90C8 /* BillboardWorker.swift */,
@@ -648,6 +674,7 @@
 				EA97CBA226943B6E00547D4C /* LoginRouter.swift in Sources */,
 				EA97CAC52693F4A100547D4C /* AppDelegate.swift in Sources */,
 				EA97CAC72693F4A100547D4C /* SceneDelegate.swift in Sources */,
+				EA4BB1A926973DD2008EFDE5 /* MovieDetailInteractor.swift in Sources */,
 				EA97CBA026943B6E00547D4C /* LoginPresenter.swift in Sources */,
 				EAF93B9726945336000F90C8 /* Globals.swift in Sources */,
 				EA97CBA526943B6E00547D4C /* LoginInteractor.swift in Sources */,
@@ -656,7 +683,9 @@
 				EA97CB3D2694016200547D4C /* Domains.swift in Sources */,
 				EA97CB4A2694021C00547D4C /* AlamofireManager.swift in Sources */,
 				EA97CBA326943B6E00547D4C /* LoginModels.swift in Sources */,
+				EA4BB1A526973DD2008EFDE5 /* MovieDetailWorker.swift in Sources */,
 				EAF93BEA2694A33C000F90C8 /* BillboardPresenter.swift in Sources */,
+				EA4BB1A626973DD2008EFDE5 /* MovieDetailRouter.swift in Sources */,
 				EA4BB15C2695A3C9008EFDE5 /* RealmApi.swift in Sources */,
 				EAF93BD92694A26B000F90C8 /* UserProfilePresenter.swift in Sources */,
 				EA4BB1642695A3EE008EFDE5 /* RealmConfig.swift in Sources */,
@@ -668,10 +697,13 @@
 				EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */,
 				EA97CB5F2694067500547D4C /* WebServicesAPI.swift in Sources */,
 				EAF93BED2694A33C000F90C8 /* BillboardModels.swift in Sources */,
+				EA4BB1A426973DD2008EFDE5 /* MovieDetailPresenter.swift in Sources */,
 				EAF93BEC2694A33C000F90C8 /* BillboardRouter.swift in Sources */,
+				EA4BB1A826973DD2008EFDE5 /* MovieDetailViewController.swift in Sources */,
 				EA97CB452694017E00547D4C /* Endpoints.swift in Sources */,
 				EAF93BDC2694A26B000F90C8 /* UserProfileModels.swift in Sources */,
 				EAF93BEE2694A33C000F90C8 /* BillboardViewController.swift in Sources */,
+				EA4BB1A726973DD2008EFDE5 /* MovieDetailModels.swift in Sources */,
 				EAF93BDB2694A26B000F90C8 /* UserProfileRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

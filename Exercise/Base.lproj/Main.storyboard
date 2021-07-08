@@ -121,6 +121,7 @@
                                         <connections>
                                             <outlet property="moviePhotoImageView" destination="2pf-c8-9qb" id="zm8-QE-cg6"/>
                                             <outlet property="movieTitleLabel" destination="xAu-4M-VBe" id="mBE-ZZ-n1O"/>
+                                            <segue destination="ekL-w8-qki" kind="show" id="n1C-wE-hxg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -146,7 +147,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pb7-Yy-Bk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4515.9420289855079" y="91.741071428571431"/>
+            <point key="canvasLocation" x="4388" y="92"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="1Gd-Ye-tYL">
+            <objects>
+                <viewController id="ekL-w8-qki" customClass="MovieDetailViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jxl-1d-KE9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FKn-ad-2Gz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="E49-tu-4N3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pEV-ME-eMv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5180" y="92"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="pVP-S2-gGi">
