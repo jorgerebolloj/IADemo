@@ -62,10 +62,6 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
         setUI()
         tryRequestBillboard()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        presentLoader()
-    }
   
     // MARK: Outlets & variables
     
@@ -77,38 +73,22 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
         self.title = "billboardSectionTitle".localized
     }
     
-    private func presentLoader() {
-        loadingViewController = LoadingViewController()
-        loadingViewController!.modalPresentationStyle = .overCurrentContext
-        loadingViewController!.modalTransitionStyle = .crossDissolve
-        present(loadingViewController!, animated: true, completion: nil)
-    }
-    
-    private func dismissLoader(withAlert: Bool, _ viewModel: AlertViewController.ErrorViewModel?) {
-        loadingViewController?.dismiss(animated: true, completion: {
-            if withAlert {
-                guard let viewModel = viewModel else { return }
-                self.alertCall(viewModel: viewModel)
-            }
-        })
-    }
-    
     // MARK: User interaction
     
     func tryRequestBillboard() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: nil)
         interactor?.tryRequestBillboard()
     }
   
     // MARK: User response
     
     func displayBillboardSuccess(with viewModel: UserProfile.Info.ViewModel) {
-        dismissLoader(withAlert: false, nil)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
     }
     
     func displayBillboardError(viewModel: AlertViewController.ErrorViewModel) {
-        dismissLoader(withAlert: true, _: viewModel)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
+        self.alertCall(viewModel: viewModel)
     }
     
     func alertCall(viewModel: AlertViewController.ErrorViewModel) {

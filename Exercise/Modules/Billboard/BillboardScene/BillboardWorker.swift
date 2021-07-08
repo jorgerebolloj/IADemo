@@ -18,23 +18,12 @@ class BillboardWorker {
             WebServicesAPI().getRequestBillboardInfo() {
                 succesful, error in
                 if !succesful! {
-                    let stringError = self.setError(error: error)
-                    completion(false, stringError)
+                    completion(false, error?.localizedDescription)
                 } else {
                     completion(true, nil)
                 }
             }
         }
-    }
-    
-    func setError(error: NSError?) -> String? {
-        guard let error = error else {
-            return "wrongDataErrorAlertMessage".localized
-        }
-        let errorCodeString = error.userInfo["error"] as? String ?? "null"
-        let errorMessageString = error.userInfo["error_description"] as? String ?? "null"
-        let errorString = "Código de error: " + errorCodeString + ".\nMensaje de error: " + errorMessageString
-        return errorString
     }
     
     // MARK: Store response data

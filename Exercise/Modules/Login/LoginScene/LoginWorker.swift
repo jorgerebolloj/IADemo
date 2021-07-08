@@ -12,7 +12,7 @@ class LoginWorker {
     
     // MARK: Worker Tasks
     
-    func attemptLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?, NSError?) -> Void)) {
+    func attemptLogin(requestModel: Login.Auth.RequestModel, completion: @escaping ((Bool?, String?) -> Void)) {
         let username = requestModel.username
         let password = requestModel.password
         
@@ -30,7 +30,7 @@ class LoginWorker {
             WebServicesAPI().getRequestLogin(requestModel: requestModel) {
                 succesful, error in
                 if !succesful! {
-                    completion(false, error)
+                    completion(false, error?.localizedDescription)
                 } else {
                     completion(true, nil)
                 }

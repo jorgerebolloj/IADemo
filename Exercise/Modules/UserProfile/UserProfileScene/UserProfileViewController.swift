@@ -63,10 +63,6 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         tryRequestUserProfile()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        presentLoader()
-    }
-    
     // MARK: Outlets & variables
     
     @IBOutlet weak var userPictureImage: UIImageView!
@@ -98,34 +94,19 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         userCardTransactionButton.setTitle("userCardTransactionButtonLabel".localized, for: .normal)
     }
     
-    private func presentLoader() {
-        loadingViewController = LoadingViewController()
-        loadingViewController!.modalPresentationStyle = .overCurrentContext
-        loadingViewController!.modalTransitionStyle = .crossDissolve
-        present(loadingViewController!, animated: true, completion: nil)
-    }
-    
-    private func dismissLoader(withAlert: Bool, _ viewModel: AlertViewController.ErrorViewModel?) {
-        loadingViewController?.dismiss(animated: true, completion: {
-            if withAlert {
-                guard let viewModel = viewModel else { return }
-                self.alertCall(viewModel: viewModel)
-            }
-        })
-    }
-    
     // MARK: User interaction
     
     // User Profile
     
     func tryRequestUserProfile() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: nil)
         interactor?.tryRequestUserProfile()
     }
     
     // User Card
     
     func tryRequestUserTransactions() {
-        presentLoader()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: nil)
         guard let cardNumber = (userCardLabel.text != nil) ? userCardTextField.text : "" else { return }
         let requestModel = UserCard.Info.RequestModel(cardNumber: cardNumber)
         interactor?.tryRequestUserTransactions(requestModel: requestModel)
@@ -136,7 +117,6 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     // User Profile
     
     func displayUserProfileSuccess(with viewModel: UserProfile.Info.ViewModel) {
-        dismissLoader(withAlert: false, nil)
         userNameLabel.text = viewModel.name
         userEmailLabel.text = viewModel.email
         userCardTextField.text = viewModel.cardNumber
@@ -144,8 +124,8 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     }
     
     func displayUserProfileError(viewModel: AlertViewController.ErrorViewModel) {
-        dismissLoader(withAlert: true, _: viewModel)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
+        self.alertCall(viewModel: viewModel)
     }
     
     func alertCall(viewModel: AlertViewController.ErrorViewModel) {
