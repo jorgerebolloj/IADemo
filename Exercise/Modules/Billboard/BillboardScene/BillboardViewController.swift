@@ -75,7 +75,7 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
         left: 20.0,
         bottom: 20.0,
         right: 20.0)
-    private let itemsPerRow: CGFloat = 3
+    private let itemsPerRow = 3
 
     
     // MARK: UI
@@ -117,25 +117,21 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
 // MARK: UICollectionViewDataSource
 
 extension BillboardViewController: UICollectionViewDataSource {
-  // 1
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-  
-  // 2
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return moviesModel?.count ?? 0
     }
-  
-  // 3
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      // 1
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MoviePhotoCell
-      // 2
+        
         //let flickrPhoto = photo(for: indexPath)
         //cell.backgroundColor = .white
         cell.movieTitleLabel.text = moviesModel?[indexPath.row].name
-      // 3
+        
         //cell.imageView.image = flickrPhoto.thumbnail
         
         return cell
@@ -146,22 +142,18 @@ extension BillboardViewController: UICollectionViewDataSource {
 // MARK: Collection View Flow Layout Delegate
 
 extension BillboardViewController: UICollectionViewDelegateFlowLayout {
-  // 1
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    // 2
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        let width = Int(UIScreen.main.bounds.width)
+        let side = width / itemsPerRow
+        let rem = width % itemsPerRow
+        let addOne = indexPath.row % itemsPerRow < rem
+        let ceilWidth = addOne ? side + 1 : side
+        return CGSize(width: ceilWidth, height: side)
     }
-  
-  // 3
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
-  
-  // 4
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
