@@ -14,7 +14,7 @@ protocol MovieDetailDisplayLogic: class {
     func displaySomething(viewModel: MovieDetail.Something.ViewModel)
 }
 
-class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic {
+class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPlayerViewControllerDelegate {
     var interactor: MovieDetailBusinessLogic?
     var router: (NSObjectProtocol & MovieDetailRoutingLogic & MovieDetailDataPassing)?
     
@@ -63,21 +63,47 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic {
         setUI()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-        let player = AVPlayer(url: videoURL!)
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.view.bounds
-        self.view.layer.addSublayer(playerLayer)
-        player.play()
-    }
-    
     // MARK: Outlets & variables
+    
+    var playerController = AVPlayerViewController()
+    var movieURL: String?
+    
+    @IBAction func Play(_ sender: Any) {
+        /*let path = Bundle.main.path(forResource: "video", ofType: "mp4")
+        let url = NSURL(fileURLWithPath: path!)*/
+        let videoURL = URL(string: movieURL!)
+        let player = AVPlayer(url: videoURL!)
+        
+        playerController = AVPlayerViewController()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MovieDetailViewController.didfinishplaying(note:)),name:NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+        
+        playerController.player = player
+        playerController.allowsPictureInPicturePlayback = true
+        playerController.delegate = self
+        playerController.player?.play()
+        
+        self.present(playerController,animated:true,completion:nil)
+    }
     
     // MARK: UI
     
     fileprivate func setUI() {
         self.title = "movieDetailSectionTitle".localized
+    }
+    
+    @objc func didfinishplaying(note : NSNotification) {
+        let alertview = UIAlertController(title:"finished",message:"video finished",preferredStyle: .alert)
+        alertview.addAction(UIAlertAction(title:"Ok",style: .default, handler: nil))
+        self.present(alertview,animated:true,completion: nil)
+    }
+    
+    func playerViewController(_ playerViewController: AVPlayerViewController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        let currentviewController =  navigationController?.visibleViewController
+        
+        if currentviewController != playerViewController {
+            currentviewController?.present(playerViewController,animated: true,completion:nil)
+        }
     }
     
     // MARK: User interaction

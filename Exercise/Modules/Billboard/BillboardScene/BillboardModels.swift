@@ -31,7 +31,7 @@ enum Billboard {
             var synopsis: String
             var length: String
             var releaseDate: String
-            var distributor: String
+            var distributor: String?
             var id: Int
             var name: String
             var code: String
@@ -125,7 +125,7 @@ final class MovieRLM: Object {
     dynamic var synopsis: String = ""
     dynamic var length: String = ""
     dynamic var releaseDate: String = ""
-    dynamic var distributor: String = ""
+    dynamic var distributor: String? = nil
     dynamic var id: Int = 0
     dynamic var name: String = ""
     dynamic var code: String = ""
