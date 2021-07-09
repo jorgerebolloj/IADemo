@@ -13,14 +13,15 @@ class BillboardWorker {
     
     // MARK: Worker Tasks
     
-    func attemptBillboardInfo(completion: @escaping ((Bool?, String?) -> Void)) {
+    func attemptBillboardInfo(completion: @escaping ((Bool?, String?, String) -> Void)) {
         DispatchQueue.global(qos: .userInitiated).sync {
+            guard let posterURL = UserDefaults.standard.string(forKey: "posterURL") else { return }
             WebServicesAPI().getRequestBillboardInfo() {
                 succesful, error in
                 if !succesful! {
-                    completion(false, error?.localizedDescription)
+                    completion(false, error?.localizedDescription, posterURL)
                 } else {
-                    completion(true, nil)
+                    completion(true, nil, posterURL)
                 }
             }
         }

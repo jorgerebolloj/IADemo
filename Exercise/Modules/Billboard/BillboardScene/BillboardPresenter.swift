@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 protocol BillboardPresentationLogic {
-    func presentBillboardSuccess(moviesModel: Results<Object>?)
+    func presentBillboardSuccess(moviesModel: Results<Object>?, posterURL: String)
     func presentBillboardError(message: String?)
     func requestMovieDetail()
 }
@@ -20,10 +20,9 @@ class BillboardPresenter: BillboardPresentationLogic {
     
     // MARK: Presenter paths
     
-    func presentBillboardSuccess(moviesModel: Results<Object>?) {
+    func presentBillboardSuccess(moviesModel: Results<Object>?, posterURL: String) {
         guard let movies = moviesModel?.toArray(ofType: MovieRLM.self) else { return }
         var moviesModelDecorated = [Billboard.Info.ViewModel]()
-        guard let posterURL = UserDefaults.standard.string(forKey: "posterURL") else { return }
         for movie in movies {
             let movieName = movie.name
             var moviePoster = ""

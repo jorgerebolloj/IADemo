@@ -246,6 +246,7 @@
                         <outlet property="movieGenreLabel" destination="Zlh-Lg-gbE" id="Ehg-y7-8oY"/>
                         <outlet property="movieLengthLabel" destination="Nsk-2h-4WL" id="77C-MN-h8o"/>
                         <outlet property="movieNameLabel" destination="Jqk-us-r08" id="Aac-uU-G9H"/>
+                        <outlet property="moviePlayButton" destination="CcX-TW-1iY" id="Biy-oZ-G0x"/>
                         <outlet property="moviePosterImageView" destination="4cq-M0-Eme" id="Xlk-bw-VlO"/>
                         <outlet property="movieRatingLabel" destination="BX8-hx-RBJ" id="h5i-0c-fgv"/>
                         <outlet property="movieSynopsisTexView" destination="3uE-q7-MWY" id="6f1-UO-qfs"/>

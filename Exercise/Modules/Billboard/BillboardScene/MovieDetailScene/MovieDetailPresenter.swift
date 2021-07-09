@@ -24,7 +24,7 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
         for movieMedia in movieMedias {
             let movieMediaCode = movieMedia.code
             if movieMediaCode == "trailer_mp4" {
-                movieVideo = trailerMp4URL + movieMedia.resource
+                movieVideo = movieMedia.resource == "" ? "withoutVideo" : trailerMp4URL + movieMedia.resource
             }
             if movieMediaCode == "background_synopsis" {
                 moviePoster = backgroundSynopsisURL + movieMedia.resource

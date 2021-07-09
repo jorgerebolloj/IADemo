@@ -71,6 +71,7 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     var movieURL: String?
     
     @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBOutlet weak var moviePlayButton: UIButton!
     @IBAction func moviePlayButtonAction(_ sender: Any) {
         let videoURL = URL(string: movieURL!)
         let player = AVPlayer(url: videoURL!)
@@ -124,6 +125,10 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     
     func displayMovieDetails(viewModel: MovieDetail.Info.ViewModel) {
         movieURL = viewModel.movieVideo
+        if movieURL == "withoutVideo" {
+            moviePlayButton.isHidden = true
+            moviePlayButton.isUserInteractionEnabled = false
+        }
         moviePosterImageView.sd_setImage(with: URL(string: viewModel.moviePoster), placeholderImage: UIImage(named: "imageMockUp.png"))
         movieNameLabel.text = viewModel.movieName
         movieRatingLabel.text = viewModel.movieRating
