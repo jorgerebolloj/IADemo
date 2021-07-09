@@ -122,7 +122,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func displayLoginSuccess() {
         dismissLoader(withAlert: false, nil)
-        router?.routeToTabBarController(segue: nil)
+        router?.routeToTabBarController()
     }
     
     func displayLoginError(viewModel: AlertViewController.ErrorViewModel) {

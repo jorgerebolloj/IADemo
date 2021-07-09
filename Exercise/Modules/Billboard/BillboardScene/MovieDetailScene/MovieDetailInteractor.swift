@@ -9,21 +9,21 @@
 import UIKit
 
 protocol MovieDetailBusinessLogic {
-    func doSomething(request: MovieDetail.Something.Request)
+    func tryRequestMovieDetails(request: MovieDetail.Something.Request)
 }
 
 protocol MovieDetailDataStore {
-    //var name: String { get set }
+    var moviePosition: Int { get set }
 }
 
 class MovieDetailInteractor: MovieDetailBusinessLogic, MovieDetailDataStore {
     var presenter: MovieDetailPresentationLogic?
     var worker: MovieDetailWorker?
-    //var name: String = ""
+    var moviePosition = 0
     
     // MARK: Do something
     
-    func doSomething(request: MovieDetail.Something.Request) {
+    func tryRequestMovieDetails(request: MovieDetail.Something.Request) {
         worker = MovieDetailWorker()
         worker?.doSomeWork()
         

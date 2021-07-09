@@ -13,14 +13,11 @@ protocol UserProfileBusinessLogic {
     func tryRequestUserTransactions(requestModel: UserCard.Info.RequestModel)
 }
 
-protocol UserProfileDataStore {
-    //var name: String { get set }
-}
+protocol UserProfileDataStore {}
 
 class UserProfileInteractor: UserProfileBusinessLogic, UserProfileDataStore {
     var presenter: UserProfilePresentationLogic?
     var worker: UserProfileWorker?
-    //var name: String = ""
     
     // MARK: Interactor management
     

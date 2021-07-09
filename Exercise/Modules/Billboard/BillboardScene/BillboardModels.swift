@@ -89,6 +89,7 @@ enum Billboard {
         struct ViewModel {
             var name: String
             var poster: String
+            var position: Int
         }
         
         struct RoutesModel {

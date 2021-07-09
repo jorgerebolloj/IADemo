@@ -12,6 +12,7 @@ import RealmSwift
 protocol BillboardPresentationLogic {
     func presentBillboardSuccess(moviesModel: Results<Object>?)
     func presentBillboardError(message: String?)
+    func requestMovieDetail()
 }
 
 class BillboardPresenter: BillboardPresentationLogic {
@@ -33,7 +34,8 @@ class BillboardPresenter: BillboardPresentationLogic {
                     moviePoster = posterURL + movieMedia.resource
                 }
             }
-            let movieModel = Billboard.Info.ViewModel(name: movieName, poster: moviePoster)
+            let moviePosition = movie.position
+            let movieModel = Billboard.Info.ViewModel(name: movieName, poster: moviePoster, position: moviePosition)
             moviesModelDecorated.append(movieModel)
         }
         DispatchQueue.main.async {
@@ -46,5 +48,9 @@ class BillboardPresenter: BillboardPresentationLogic {
             let viewModel = AlertViewController.ErrorViewModel(errorTitle: "errorAlertTitle".localized, errorMessage: message ?? "null")
             self.viewController?.displayBillboardError(viewModel: viewModel)
         }
+    }
+    
+     func requestMovieDetail() {
+        viewController?.requestMovieDetail()
     }
 }

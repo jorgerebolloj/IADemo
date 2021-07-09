@@ -60,7 +60,9 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieURL = ""
         setUI()
+        tryRequestMovieDetails()
     }
     
     // MARK: Outlets & variables
@@ -113,9 +115,10 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     
     // MARK: User interaction
     
-    func doSomething() {
+    func tryRequestMovieDetails() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: nil)
         let request = MovieDetail.Something.Request()
-        interactor?.doSomething(request: request)
+        interactor?.tryRequestMovieDetails(request: request)
     }
     
     // MARK: User response

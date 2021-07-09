@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol LoginRoutingLogic {
-    func routeToTabBarController(segue: UIStoryboardSegue?)
+    func routeToTabBarController()
 }
 
 protocol LoginDataPassing {
@@ -22,11 +22,9 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     
     // MARK: Routing
     
-    func routeToTabBarController(segue: UIStoryboardSegue?) {
+    func routeToTabBarController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-        /*var userProfileDataStore = userProfileViewController.router!.dataStore!
-        passDataToUserProfileViewController(source: dataStore!, destination: &userProfileDataStore)*/
         navigateToTabBarController(source: viewController!, destination: tabBarController)
     }
     
@@ -35,10 +33,4 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing {
     func navigateToTabBarController(source: LoginViewController, destination: TabBarController) {
         source.show(destination, sender: nil)
     }
-    
-    // MARK: Passing data
-    
-    /*func passDataToUserProfileViewController(source: LoginDataStore, destination: inout UserProfileDataStore) {
-        //destination.name = source.name
-    }*/
 }

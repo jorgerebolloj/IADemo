@@ -12,14 +12,11 @@ protocol LoginBusinessLogic {
     func userTriesRequestLogin(requestModel: Login.Auth.RequestModel)
 }
 
-protocol LoginDataStore {
-    //var name: String { get set }
-}
+protocol LoginDataStore {}
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore {
     var presenter: LoginPresentationLogic?
     var worker: LoginWorker?
-    //var name: String = ""
     
     // MARK: Interactor management
     

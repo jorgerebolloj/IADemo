@@ -12,6 +12,7 @@ import SDWebImage
 protocol BillboardDisplayLogic: class {
     func displayBillboardSuccess(with viewModel: [Billboard.Info.ViewModel]?)
     func displayBillboardError(viewModel: AlertViewController.ErrorViewModel)
+    func requestMovieDetail()
 }
 
 class BillboardViewController: UIViewController, BillboardDisplayLogic {
@@ -61,6 +62,7 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         moviesModel = [Billboard.Info.ViewModel]()
+        moviePosition = 0
         setUI()
         tryRequestBillboard()
     }
@@ -68,6 +70,7 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     // MARK: Outlets & variables
     
     var moviesModel: [Billboard.Info.ViewModel]?
+    var moviePosition: Int?
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     private let reuseIdentifier = "MovieCollectionCell"
@@ -90,6 +93,14 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     func tryRequestBillboard() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: nil)
         interactor?.tryRequestBillboard()
+    }
+    
+    func userTryToRequestMovieDetail(movieSelected: Int) {
+        interactor?.tryToRequestMovieDetail(movieSelected: movieSelected)
+    }
+    
+    func requestMovieDetail() {
+        router?.tryToRequestMovieDetail()
     }
   
     // MARK: User response
@@ -157,5 +168,12 @@ extension BillboardViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movieSelected = moviesModel?[indexPath.row]
+        let posibleMoviePosition = movieSelected?.position
+        guard let moviePosition = posibleMoviePosition else { return }
+        userTryToRequestMovieDetail(movieSelected: moviePosition)
     }
 }

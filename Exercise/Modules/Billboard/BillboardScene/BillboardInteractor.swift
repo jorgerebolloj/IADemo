@@ -11,17 +11,17 @@ import RealmSwift
 
 protocol BillboardBusinessLogic {
     func tryRequestBillboard()
+    func tryToRequestMovieDetail(movieSelected: Int)
 }
 
 protocol BillboardDataStore {
-  //var name: String { get set }
+    var moviePosition: Int { get set }
 }
 
 class BillboardInteractor: BillboardBusinessLogic, BillboardDataStore {
     var presenter: BillboardPresentationLogic?
     var worker: BillboardWorker?
-    //let queue = DispatchQueue(label: "billboard")
-    //var name: String = ""
+    var moviePosition = 0
     
     // MARK: Do something
     
@@ -32,17 +32,16 @@ class BillboardInteractor: BillboardBusinessLogic, BillboardDataStore {
                 if !succesful! {
                     self.presenter?.presentBillboardError(message: error)
                 } else {
-                    //self.queue.async {
-                        self.worker?.queryRouteData()
-                    //}
+                    self.worker?.queryRouteData()
                     var moviesModel: Results<Object>?
-                    //self.queue.async {
-                        moviesModel = self.worker?.queryMovieData()
-                    //}
-                    //self.queue.async {
-                        self.presenter?.presentBillboardSuccess(moviesModel: moviesModel)
-                    //}
+                    moviesModel = self.worker?.queryMovieData()
+                    self.presenter?.presentBillboardSuccess(moviesModel: moviesModel)
                 }
         }
+    }
+    
+    func tryToRequestMovieDetail(movieSelected: Int) {
+        moviePosition = movieSelected
+        presenter?.requestMovieDetail()
     }
 }
