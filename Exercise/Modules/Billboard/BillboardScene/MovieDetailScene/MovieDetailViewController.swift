@@ -11,7 +11,7 @@ import AVFoundation
 import AVKit
 
 protocol MovieDetailDisplayLogic: class {
-    func displaySomething(viewModel: MovieDetail.Something.ViewModel)
+    func displayMovieDetails(viewModel: MovieDetail.Info.ViewModel)
 }
 
 class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPlayerViewControllerDelegate {
@@ -117,13 +117,19 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     
     func tryRequestMovieDetails() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: nil)
-        let request = MovieDetail.Something.Request()
-        interactor?.tryRequestMovieDetails(request: request)
+        interactor?.tryRequestMovieDetails()
     }
     
     // MARK: User response
     
-    func displaySomething(viewModel: MovieDetail.Something.ViewModel) {
-        //nameTextField.text = viewModel.name
+    func displayMovieDetails(viewModel: MovieDetail.Info.ViewModel) {
+        movieURL = viewModel.movieVideo
+        moviePosterImageView.sd_setImage(with: URL(string: viewModel.moviePoster), placeholderImage: UIImage(named: "imageMockUp.png"))
+        movieNameLabel.text = viewModel.movieName
+        movieRatingLabel.text = viewModel.movieRating
+        movieGenreLabel.text = viewModel.movieGenre
+        movieLengthLabel.text = viewModel.movieLength
+        movieSynopsisTexView.text = viewModel.movieSynopsis
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
     }
 }

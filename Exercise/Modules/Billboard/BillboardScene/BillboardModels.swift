@@ -153,6 +153,41 @@ final class MovieRLM: Object {
     internal override static func primaryKey() -> String? {
         return "position"
     }
+    
+    static func create(rating: String = "",
+                       media: [MediaRLM],
+                       cast:[CastRLM],
+                       position: Int = 0,
+                       categories:[String],
+                       genre: String = "",
+                       synopsis: String = "",
+                       length: String = "",
+                       releaseDate: String = "",
+                       distributor: String?,
+                       id: Int = 0,
+                       name: String = "",
+                       code: String = "",
+                       originalName: String = "") -> MovieRLM {
+        
+        let movieRLM = MovieRLM()
+        
+        movieRLM.rating = rating
+        movieRLM.media.append(objectsIn: media)
+        movieRLM.cast.append(objectsIn: cast)
+        movieRLM.position = position
+        movieRLM.categories.append(objectsIn: categories)
+        movieRLM.genre = genre
+        movieRLM.synopsis = synopsis
+        movieRLM.length = length
+        movieRLM.releaseDate = releaseDate
+        movieRLM.distributor = distributor
+        movieRLM.id = id
+        movieRLM.name = name
+        movieRLM.code = code
+        movieRLM.originalName = originalName
+        
+        return movieRLM
+    }
 }
 
 @objcMembers

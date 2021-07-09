@@ -23,8 +23,10 @@ class BillboardRouter: NSObject, BillboardRoutingLogic, BillboardDataPassing {
   // MARK: Routing
     func tryToRequestMovieDetail() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
-        navigateToMovieDetailViewController(source: viewController!, destination: tabBarController)
+        let movieDetailViewController = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+        navigateToMovieDetailViewController(source: viewController!, destination: movieDetailViewController)
+        var destinationDS = movieDetailViewController.router!.dataStore!
+        passDataMovieDetailViewController(source: dataStore!, destination: &destinationDS)
     }
     
     // MARK: Navigation
@@ -35,7 +37,7 @@ class BillboardRouter: NSObject, BillboardRoutingLogic, BillboardDataPassing {
     
     // MARK: Passing data
     
-    func passDataToSomewhere(source: BillboardDataStore, destination: inout MovieDetailDataStore) {
+    func passDataMovieDetailViewController(source: BillboardDataStore, destination: inout MovieDetailDataStore) {
         destination.moviePosition = source.moviePosition
     }
 }

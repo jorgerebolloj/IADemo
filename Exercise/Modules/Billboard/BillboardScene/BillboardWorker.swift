@@ -27,8 +27,10 @@ class BillboardWorker {
     }
     
     func queryMovieData() -> Results<Object>? {
-        let movies = RealmApi().allObjects(fromObject: MovieRLM.self)
-        return movies
+        autoreleasepool {
+            let movies = RealmApi().allObjects(fromObject: MovieRLM.self)
+            return movies
+        }
     }
     
     func queryRouteData() {

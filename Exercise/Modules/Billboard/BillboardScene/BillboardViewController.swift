@@ -108,8 +108,6 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     func displayBillboardSuccess(with viewModel: [Billboard.Info.ViewModel]?) {
         moviesModel = viewModel
         moviesCollectionView.reloadData()
-        self.view.setNeedsLayout()
-        self.view.layoutIfNeeded()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: nil)
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MovieDetailPresentationLogic {
-    func presentSomething(response: MovieDetail.Something.Response)
+    func presentMovieDetails(_ movieDetails: MovieRLM, _ backgroundSynopsisURL: String, _ trailerMp4URL: String)
 }
 
 class MovieDetailPresenter: MovieDetailPresentationLogic {
@@ -17,8 +17,27 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
     
     // MARK: Do something
     
-    func presentSomething(response: MovieDetail.Something.Response) {
-        let viewModel = MovieDetail.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentMovieDetails(_ movieDetails: MovieRLM, _ backgroundSynopsisURL: String, _ trailerMp4URL: String) {
+        var movieVideo = ""
+        var moviePoster = ""
+        let movieMedias = movieDetails.media
+        for movieMedia in movieMedias {
+            let movieMediaCode = movieMedia.code
+            if movieMediaCode == "trailer_mp4" {
+                movieVideo = trailerMp4URL + movieMedia.resource
+            }
+            if movieMediaCode == "background_synopsis" {
+                moviePoster = backgroundSynopsisURL + movieMedia.resource
+            }
+        }
+        let movieName = movieDetails.name
+        let movieRating = movieDetails.rating
+        let movieGenre = movieDetails.genre
+        let movieLength = movieDetails.length
+        let movieSynopsis = movieDetails.synopsis
+        let viewModel = MovieDetail.Info.ViewModel(movieVideo: movieVideo, movieName: movieName, movieRating: movieRating, movieGenre: movieGenre, movieLength: movieLength, movieSynopsis: movieSynopsis, moviePoster: moviePoster)
+        DispatchQueue.main.async {
+            self.viewController?.displayMovieDetails(viewModel: viewModel)
+        }
     }
 }

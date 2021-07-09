@@ -91,6 +91,14 @@ class RealmApi {
         return results
     }
     
+    func selectSingle(className type: AnyClass, primaryKey: Int) -> Object? {
+        let tipoClase = type as? Object.Type
+        let resultadoSelect = realm.object(ofType: tipoClase!, forPrimaryKey: primaryKey)
+        let result = resultadoSelect
+        
+        return result
+    }
+    
     func allObjects(fromObject entity: AnyClass) -> Results<Object>? {
         guard let classType = entity as? Object.Type else  { return nil }
         let objects = realm.objects(classType)

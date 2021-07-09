@@ -12,14 +12,15 @@ enum MovieDetail {
     
     // MARK: Use cases
     
-    enum Something {
-        struct Request {
-        }
-        
-        struct Response  {
-        }
-        
+    enum Info {
         struct ViewModel {
+            let movieVideo: String
+            let movieName: String
+            let movieRating: String
+            let movieGenre: String
+            let movieLength: String
+            let movieSynopsis: String
+            let moviePoster: String
         }
     }
 }

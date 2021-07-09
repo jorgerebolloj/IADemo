@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MovieDetailBusinessLogic {
-    func tryRequestMovieDetails(request: MovieDetail.Something.Request)
+    func tryRequestMovieDetails()
 }
 
 protocol MovieDetailDataStore {
@@ -23,11 +23,14 @@ class MovieDetailInteractor: MovieDetailBusinessLogic, MovieDetailDataStore {
     
     // MARK: Do something
     
-    func tryRequestMovieDetails(request: MovieDetail.Something.Request) {
+    func tryRequestMovieDetails() {
         worker = MovieDetailWorker()
-        worker?.doSomeWork()
-        
-        let response = MovieDetail.Something.Response()
-        presenter?.presentSomething(response: response)
+        worker?.requestMovieDetails(withMovie: moviePosition) {
+            movieDetailsResult, backgroundSynopsisURL, trailerMp4URL  in
+            guard let movieDetails = movieDetailsResult else { return}
+            guard let backgroundSynopsisURL = backgroundSynopsisURL else { return}
+            guard let trailerMp4URL = trailerMp4URL else { return}
+            self.presenter?.presentMovieDetails(movieDetails, backgroundSynopsisURL, trailerMp4URL)
+        }
     }
 }
