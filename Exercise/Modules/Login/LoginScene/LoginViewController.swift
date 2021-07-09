@@ -176,7 +176,22 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     
     func displayLoginSuccess() {
         dismissLoader(withAlert: false, nil)
-        router?.routeToTabBarController()
+        
+        let sceneDeleage = SceneDelegate.shared
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController : UIViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        sceneDeleage?.window?.makeKeyAndVisible()
+        sceneDeleage?.window?.rootViewController?.present(tabBarController, animated: true, completion: nil)
+    }
+    
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.windows.first!.rootViewController
+
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+
+        return topMostViewController
     }
     
     func displayLoginError(viewModel: AlertViewController.ErrorViewModel) {

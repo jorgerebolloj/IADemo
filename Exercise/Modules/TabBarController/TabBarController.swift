@@ -11,6 +11,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     var loadingViewController: LoadingViewController?
     var viewModel: AlertViewController.ErrorViewModel?
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
