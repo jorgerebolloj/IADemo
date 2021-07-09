@@ -68,9 +68,8 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     var playerController = AVPlayerViewController()
     var movieURL: String?
     
-    @IBAction func Play(_ sender: Any) {
-        /*let path = Bundle.main.path(forResource: "video", ofType: "mp4")
-        let url = NSURL(fileURLWithPath: path!)*/
+    @IBOutlet weak var moviePosterImageView: UIImageView!
+    @IBAction func moviePlayButtonAction(_ sender: Any) {
         let videoURL = URL(string: movieURL!)
         let player = AVPlayer(url: videoURL!)
         
@@ -81,10 +80,16 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
         playerController.player = player
         playerController.allowsPictureInPicturePlayback = true
         playerController.delegate = self
-        playerController.player?.play()
         
-        self.present(playerController,animated:true,completion:nil)
+        self.present(playerController,animated: true) {
+            self.playerController.player?.play()
+        }
     }
+    @IBOutlet weak var movieNameLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
+    @IBOutlet weak var movieGenreLabel: UILabel!
+    @IBOutlet weak var movieLengthLabel: UILabel!
+    @IBOutlet weak var movieSynopsisTexView: UITextView!
     
     // MARK: UI
     

@@ -45,13 +45,13 @@ class BillboardWorker {
                 if code == "poster" {
                     let sizes = route.sizes
                     for size in sizes {
-                        poster = size.small ?? ""
+                        poster = size.medium ?? ""
                     }
                 }
                 if code == "background_synopsis" {
                     let sizes = route.sizes
                     for size in sizes {
-                        backgroundSynopsis = size.small ?? ""
+                        backgroundSynopsis = size.medium ?? ""
                     }
                 }
                 if code == "trailer_mp4" {
@@ -63,7 +63,7 @@ class BillboardWorker {
                 if code == "poster_horizontal" {
                     let sizes = route.sizes
                     for size in sizes {
-                        posterHorizontal = size.small ?? ""
+                        posterHorizontal = size.medium ?? ""
                     }
                 }
                 if code == "ribbon" {
