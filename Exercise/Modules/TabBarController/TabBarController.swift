@@ -14,8 +14,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 13.0, *) {
-            //overrideUserInterfaceStyle = .light
-            //self.isModalInPresentation = true
             self.navigationItem.setHidesBackButton(true, animated: false)
             self.delegate = self
         }
@@ -23,7 +21,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //setTabBarProperties()
         NotificationCenter.default.addObserver(self, selector: #selector(self.requestDismiss), name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
         NotificationCenter.default.addObserver(self, selector: #selector(self.presentTabBarLoader), name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: viewModel)
     }
@@ -41,26 +38,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let items = tabBar.items else { return }
         items[0].title = "userProfileSectionTitle".localized
         items[1].title = "billboardSectionTitle".localized
-        tabBarController?.tabBar.barTintColor = UIColor.black
-        tabBarController?.tabBar.tintColor = UIColor.white
-        
-        //self.navigationController?.navigationBar.isHidden = false
-        //let selectedStateImage = ["icon-newsFeed","icon-Materias", "Image"]
-        //let unselectedStateImage = selectedStateImage
-        /*if let count = self.tabBar.items?.count {
-            for i in 0...(count-1) {
-                let selectedImage   = selectedStateImage[i]
-                let unselectedImage = unselectedStateImage[i]
-                /*if TabBarController.gotNews {
-                    self.tabBar.items?[0].selectedImage = UIImage(named: "news-notified")?.withRenderingMode(.alwaysOriginal)
-                    self.tabBar.items?[0].image = UIImage(named: unselectedImage)?.withRenderingMode(.alwaysOriginal)
-                } else {
-                    self.tabBar.items?[i].selectedImage = UIImage(named: selectedImage)?.withRenderingMode(.alwaysOriginal)
-                    self.tabBar.items?[i].image = UIImage(named: unselectedImage)?.withRenderingMode(.alwaysOriginal)
-                }*/
-            }
-        }*/
-        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
     }
     
     @objc func presentTabBarLoader() {
@@ -76,15 +55,5 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private func dismissTabBarLoader() {
         self.loadingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-         let tabBarIndex = tabBarController.selectedIndex
-         if tabBarIndex == 0 {
-         }
-         if tabBarIndex == 1 {
-         }
-         if tabBarIndex == 2 {
-         }
     }
 }
