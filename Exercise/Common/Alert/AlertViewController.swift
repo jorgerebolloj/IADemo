@@ -31,6 +31,7 @@ class AlertViewController: UIViewController {
         alertTitle.text = errorTitle
         alertMessage.text = errorMessage
         alertButton.setTitle("alertConfirmationButton".localized, for: .normal)
+        alertButton.roundedBorder()
     }
     
     @IBAction func dismissButtonTapped(_ sender: UIButton) {

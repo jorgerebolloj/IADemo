@@ -26,8 +26,6 @@ class RoundButton: UIButton {
     }
 
     private func setBorder() {
-        layer.cornerRadius = 5
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.white.cgColor
+        
     }
 }

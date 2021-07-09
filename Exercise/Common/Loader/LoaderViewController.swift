@@ -29,7 +29,7 @@ class LoadingViewController: UIViewController {
         return indicator
     }()
     
-    var blurEffectView: UIVisualEffectView = {
+    /*var blurEffectView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .dark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
@@ -43,17 +43,17 @@ class LoadingViewController: UIViewController {
         ]
         
         return blurEffectView
-    }()
+    }()*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
-        // Add the blurEffectView with the same
+        /*// Add the blurEffectView with the same
         // size as view
         blurEffectView.frame = self.view.bounds
-        view.insertSubview(blurEffectView, at: 0)
+        view.insertSubview(blurEffectView, at: 0)*/
         
         // Add the loadingActivityIndicator in the
         // center of view

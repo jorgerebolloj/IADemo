@@ -13,7 +13,7 @@ protocol LoginDisplayLogic: class {
     func displayLoginError(viewModel: AlertViewController.ErrorViewModel)
 }
 
-class LoginViewController: UIViewController, LoginDisplayLogic {
+class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDelegate {
     var interactor: LoginBusinessLogic?
     var router: (NSObjectProtocol & LoginRoutingLogic & LoginDataPassing)?
     
@@ -60,6 +60,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +74,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: Outlets & variables
@@ -79,15 +84,20 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func loginButtonAction(_ sender: Any) {
+        passwordTextField.resignFirstResponder()
         userTriesRequestLogin()
     }
     
     var loadingViewController: LoadingViewController?
+    var activeTextField : UITextField? = nil
     
     fileprivate func setUI() {
         loginButton.setTitle("loginButtonTitle".localized, for: .normal)
+        loginButton.roundedBorder()
         usernameTextField.placeholder = "usernamePlaceholderText".localized
         passwordTextField.placeholder = "passwordPlaceholderText".localized
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     // MARK: UI
@@ -116,6 +126,50 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
         let password = passwordTextField.text ?? ""
         let requestModel = Login.Auth.RequestModel(username: username, password: password)
         interactor?.userTriesRequestLogin(requestModel: requestModel)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        var shouldMoveViewUp = false
+        
+        if let activeTextField = activeTextField {
+            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY
+            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+            if bottomOfTextField > topOfKeyboard {
+                shouldMoveViewUp = true
+            }
+        }
+
+        if(shouldMoveViewUp) {
+          self.view.frame.origin.y = 0 - keyboardSize.height
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeTextField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        self.activeTextField = nil
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            userTriesRequestLogin()
+        }
+        return true
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     // MARK: User response

@@ -38,6 +38,8 @@
 		EA97CBA426943B6E00547D4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CB9E26943B6E00547D4C /* LoginViewController.swift */; };
 		EA97CBA526943B6E00547D4C /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CB9F26943B6E00547D4C /* LoginInteractor.swift */; };
 		EAB150A92698E2AF000108CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB150A82698E2AF000108CC /* RoundButton.swift */; };
+		EAB150B52698EE72000108CC /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB150B42698EE72000108CC /* UIImageView.swift */; };
+		EAB150BD2698EECA000108CC /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB150BC2698EECA000108CC /* UIButton.swift */; };
 		EAF93B9726945336000F90C8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93B9626945336000F90C8 /* Globals.swift */; };
 		EAF93BAC26946A72000F90C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAF93BAE26946A72000F90C8 /* Localizable.strings */; };
 		EAF93BB526946AE1000F90C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BB426946AE1000F90C8 /* String.swift */; };
@@ -117,6 +119,8 @@
 		EA97CB9E26943B6E00547D4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EA97CB9F26943B6E00547D4C /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		EAB150A82698E2AF000108CC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		EAB150B42698EE72000108CC /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		EAB150BC2698EECA000108CC /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		EAF93B9626945336000F90C8 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF93B9E269469AB000F90C8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		EAF93B9F269469AB000F90C8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				EAF93BB426946AE1000F90C8 /* String.swift */,
+				EAB150B42698EE72000108CC /* UIImageView.swift */,
+				EAB150BC2698EECA000108CC /* UIButton.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -688,6 +694,7 @@
 				EA4BB1A926973DD2008EFDE5 /* MovieDetailInteractor.swift in Sources */,
 				EA97CBA026943B6E00547D4C /* LoginPresenter.swift in Sources */,
 				EAF93B9726945336000F90C8 /* Globals.swift in Sources */,
+				EAB150BD2698EECA000108CC /* UIButton.swift in Sources */,
 				EA97CBA526943B6E00547D4C /* LoginInteractor.swift in Sources */,
 				EAF93BDD2694A26B000F90C8 /* UserProfileViewController.swift in Sources */,
 				EAF93BCD2694816F000F90C8 /* LoaderViewController.swift in Sources */,
@@ -703,6 +710,7 @@
 				EA4BB17C2696EBBB008EFDE5 /* MoviePhotoCell.swift in Sources */,
 				EAF93BDE2694A26B000F90C8 /* UserProfileInteractor.swift in Sources */,
 				EAF93BDA2694A26B000F90C8 /* UserProfileWorker.swift in Sources */,
+				EAB150B52698EE72000108CC /* UIImageView.swift in Sources */,
 				EAF93BB526946AE1000F90C8 /* String.swift in Sources */,
 				EAF93BEB2694A33C000F90C8 /* BillboardWorker.swift in Sources */,
 				EAF93BC22694732D000F90C8 /* AlertViewController.swift in Sources */,

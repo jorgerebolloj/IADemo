@@ -82,7 +82,10 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     
     fileprivate func setUI() {
         self.title = "userProfileSectionTitle".localized
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         userPictureImage.image = UIImage(named: "userPicture")
+        userPictureImage.makeRounded()
         welcomeLabel.text = "welcomeLabel".localized
         userNameLabel.text = ""
         emailLabel.text = "emailLabel".localized
@@ -90,6 +93,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         userCardLabel.text = "cardLabel".localized
         userCardTextField.text = ""
         userCardTransactionButton.setTitle("userCardTransactionButtonLabel".localized, for: .normal)
+        userCardTransactionButton.roundedBorder()
     }
     
     // MARK: User interaction
