@@ -37,6 +37,7 @@
 		EA97CBA326943B6E00547D4C /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CB9D26943B6E00547D4C /* LoginModels.swift */; };
 		EA97CBA426943B6E00547D4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CB9E26943B6E00547D4C /* LoginViewController.swift */; };
 		EA97CBA526943B6E00547D4C /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA97CB9F26943B6E00547D4C /* LoginInteractor.swift */; };
+		EAB150A92698E2AF000108CC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB150A82698E2AF000108CC /* RoundButton.swift */; };
 		EAF93B9726945336000F90C8 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93B9626945336000F90C8 /* Globals.swift */; };
 		EAF93BAC26946A72000F90C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EAF93BAE26946A72000F90C8 /* Localizable.strings */; };
 		EAF93BB526946AE1000F90C8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF93BB426946AE1000F90C8 /* String.swift */; };
@@ -115,6 +116,7 @@
 		EA97CB9D26943B6E00547D4C /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
 		EA97CB9E26943B6E00547D4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EA97CB9F26943B6E00547D4C /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		EAB150A82698E2AF000108CC /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		EAF93B9626945336000F90C8 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF93B9E269469AB000F90C8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		EAF93B9F269469AB000F90C8 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -332,9 +334,18 @@
 			path = LoginScene;
 			sourceTree = "<group>";
 		};
+		EAB150B02698E411000108CC /* RoundButton */ = {
+			isa = PBXGroup;
+			children = (
+				EAB150A82698E2AF000108CC /* RoundButton.swift */,
+			);
+			path = RoundButton;
+			sourceTree = "<group>";
+		};
 		EAF93B9426945314000F90C8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EAB150B02698E411000108CC /* RoundButton */,
 				EAF93BC02694730E000F90C8 /* Alert */,
 				EAF93BBF269472ED000F90C8 /* Loader */,
 				EAF93B9626945336000F90C8 /* Globals.swift */,
@@ -701,6 +712,7 @@
 				EAF93BEC2694A33C000F90C8 /* BillboardRouter.swift in Sources */,
 				EA4BB1A826973DD2008EFDE5 /* MovieDetailViewController.swift in Sources */,
 				EA97CB452694017E00547D4C /* Endpoints.swift in Sources */,
+				EAB150A92698E2AF000108CC /* RoundButton.swift in Sources */,
 				EAF93BDC2694A26B000F90C8 /* UserProfileModels.swift in Sources */,
 				EAF93BEE2694A33C000F90C8 /* BillboardViewController.swift in Sources */,
 				EA4BB1A726973DD2008EFDE5 /* MovieDetailModels.swift in Sources */,

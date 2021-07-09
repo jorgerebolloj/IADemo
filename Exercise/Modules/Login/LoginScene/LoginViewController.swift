@@ -112,8 +112,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic {
     
     func userTriesRequestLogin() {
         presentLoader()
-        let username = "pruebas_beto_ia@yahoo.com" // usernameTextField.text ?? ""
-        let password = "Pruebas01" // passwordTextField.text ?? ""
+        let username = usernameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
         let requestModel = Login.Auth.RequestModel(username: username, password: password)
         interactor?.userTriesRequestLogin(requestModel: requestModel)
     }

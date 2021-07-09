@@ -14,6 +14,7 @@ class AlertViewController: UIViewController {
     var errorMessage: String?
     
     @IBOutlet weak var alertBackgroundView: UIView!
+    @IBOutlet weak var alertMessageBackgroundView: UIView!
     @IBOutlet weak var alertTitle: UILabel!
     @IBOutlet weak var alertMessage: UILabel!
     @IBOutlet weak var alertButton: UIButton!
@@ -26,6 +27,7 @@ class AlertViewController: UIViewController {
     fileprivate func setUI() {
         guard let errorTitle = viewModel?.errorTitle else { return }
         guard let errorMessage = viewModel?.errorMessage else { return }
+        alertMessageBackgroundView.layer.cornerRadius = 8
         alertTitle.text = errorTitle
         alertMessage.text = errorMessage
         alertButton.setTitle("alertConfirmationButton".localized, for: .normal)
