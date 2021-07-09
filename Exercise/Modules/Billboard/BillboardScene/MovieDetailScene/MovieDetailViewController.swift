@@ -98,6 +98,7 @@ class MovieDetailViewController: UIViewController, MovieDetailDisplayLogic, AVPl
     
     fileprivate func setUI() {
         self.title = "movieDetailSectionTitle".localized
+        movieSynopsisTexView.layer.cornerRadius = 8
     }
     
     @objc func didfinishplaying(note : NSNotification) {
