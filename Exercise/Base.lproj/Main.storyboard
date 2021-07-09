@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" interfaceStyle="dark" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,14 +96,14 @@
         <!--Billboard View Controller-->
         <scene sceneID="oE6-jn-mxl">
             <objects>
-                <viewController storyboardIdentifier="BillboardViewController" id="QTq-yu-XZ2" customClass="BillboardViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BillboardViewController" interfaceStyle="dark" id="QTq-yu-XZ2" customClass="BillboardViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uag-HS-kW6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nd7-bJ-rdT">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gpd-Ou-rjQ">
                                     <size key="itemSize" width="100" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -127,8 +127,8 @@
                                                         <constraint firstAttribute="height" constant="50" id="IxO-7s-vth"/>
                                                         <constraint firstAttribute="width" constant="100" id="R0E-NL-dOe"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -155,7 +155,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Aaf-TW-YnQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nd7-bJ-rdT" firstAttribute="bottom" secondItem="Aaf-TW-YnQ" secondAttribute="bottom" id="Z4j-tE-ilB"/>
                             <constraint firstItem="nd7-bJ-rdT" firstAttribute="top" secondItem="Aaf-TW-YnQ" secondAttribute="top" id="bkd-5H-LTp"/>
@@ -175,7 +175,7 @@
         <!--Movie Detail View Controller-->
         <scene sceneID="1Gd-Ye-tYL">
             <objects>
-                <viewController storyboardIdentifier="MovieDetailViewController" id="ekL-w8-qki" customClass="MovieDetailViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailViewController" interfaceStyle="dark" id="ekL-w8-qki" customClass="MovieDetailViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jxl-1d-KE9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,7 +455,7 @@
         <!--Alert View Controller-->
         <scene sceneID="uxY-yq-gDV">
             <objects>
-                <viewController storyboardIdentifier="AlertViewController" id="8dJ-3j-qVN" customClass="AlertViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AlertViewController" interfaceStyle="dark" id="8dJ-3j-qVN" customClass="AlertViewController" customModule="Exercise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lg0-m5-Fs6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -542,7 +542,7 @@
         <!--Navigation Controller-->
         <scene sceneID="DQn-di-SV9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PDh-uA-rws" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="dark" id="PDh-uA-rws" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Cci-q9-JcF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sJC-cZ-EW6">

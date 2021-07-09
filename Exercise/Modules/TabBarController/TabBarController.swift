@@ -41,6 +41,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let items = tabBar.items else { return }
         items[0].title = "userProfileSectionTitle".localized
         items[1].title = "billboardSectionTitle".localized
+        tabBarController?.tabBar.barTintColor = UIColor.black
+        tabBarController?.tabBar.tintColor = UIColor.white
         
         //self.navigationController?.navigationBar.isHidden = false
         //let selectedStateImage = ["icon-newsFeed","icon-Materias", "Image"]

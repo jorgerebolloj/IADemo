@@ -86,6 +86,8 @@ class BillboardViewController: UIViewController, BillboardDisplayLogic {
     
     fileprivate func setUI() {
         self.title = "billboardSectionTitle".localized
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     // MARK: User interaction
