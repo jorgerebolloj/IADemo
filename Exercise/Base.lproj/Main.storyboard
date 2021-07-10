@@ -588,6 +588,7 @@
             <point key="canvasLocation" x="4517.391304347826" y="91.741071428571431"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="billboardIcon" width="25" height="25"/>
         <image name="logo" width="191.33332824707031" height="302.66665649414062"/>
