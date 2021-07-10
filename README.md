@@ -16,7 +16,6 @@
   
 ## Pods instalados
 	Alamofire (REST service)
-	CryptoSwift (Ofuscación de datos sensibles)
 	RealmSwift (Percistencia de volumen alto de datos)
 	SDWebImage (Manejo de descarga de imagenes remotas)
   
@@ -72,6 +71,7 @@
 	Workflow para transacciones de tarjeta (servicio no disponible)
 	Animación de loader
 	Feedback a usuario de resultado de operación con alert view
+	Función para botón logout
 
 ## Vista de Cartelera
 	Pintado de posters de películas y nombre
@@ -81,3 +81,11 @@
 	
 ## Vista de Detalle de película
 	Modelado de datos para la vista
+	Pintado de deatlle de película
+	Presentación de poster de película
+	Reproducción de trailer (si está disponible)
+	Animación de loader
+	Feedback a usuario de resultado de operación con alert view
+
+## Flujo completo para el usuario
+	Se puede hacer login y logout en la app
