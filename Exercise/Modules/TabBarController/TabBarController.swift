@@ -24,9 +24,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         setTabBarProperties()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(self.requestDismiss), name: NSNotification.Name(rawValue: "dismissTabBarLoader"), object: viewModel)
         NotificationCenter.default.addObserver(self, selector: #selector(self.presentTabBarLoader), name: NSNotification.Name(rawValue: "presentTabBarLoader"), object: viewModel)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.logout), name: NSNotification.Name(rawValue: "logout"), object: viewModel)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,5 +63,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private func dismissTabBarLoader() {
         self.loadingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func logout() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController")
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(loginViewController)
     }
 }

@@ -73,6 +73,10 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
     @IBOutlet weak var userCardLabel: UILabel!
     @IBOutlet weak var userCardTextField: UITextField!
     @IBOutlet weak var userCardTransactionButton: UIButton!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBAction func logoutButtonAction(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "logout"), object: nil)
+    }
     
     @IBAction func userCardTransactionButtonAction(_ sender: Any) {
         tryRequestUserTransactions()
@@ -94,6 +98,7 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic {
         userCardTextField.text = ""
         userCardTransactionButton.setTitle("userCardTransactionButtonLabel".localized, for: .normal)
         userCardTransactionButton.roundedBorder()
+        logoutButton.title = "logoutButtonLabel".localized
     }
     
     // MARK: User interaction

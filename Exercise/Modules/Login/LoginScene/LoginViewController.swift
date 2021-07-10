@@ -90,6 +90,7 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     
     var loadingViewController: LoadingViewController?
     var activeTextField : UITextField? = nil
+    static let sceneDelegate = SceneDelegate.shared
     
     fileprivate func setUI() {
         loginButton.setTitle("loginButtonTitle".localized, for: .normal)
@@ -176,13 +177,9 @@ class LoginViewController: UIViewController, LoginDisplayLogic, UITextFieldDeleg
     
     func displayLoginSuccess() {
         dismissLoader(withAlert: false, nil)
-        
-        let sceneDeleage = SceneDelegate.shared
-        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController : UIViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-        tabBarController.modalPresentationStyle = .fullScreen
-        sceneDeleage?.window?.makeKeyAndVisible()
-        sceneDeleage?.window?.rootViewController?.present(tabBarController, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as! TabBarController
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(tabBarController)
     }
     
     func displayLoginError(viewModel: AlertViewController.ErrorViewModel) {
