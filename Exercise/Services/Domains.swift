@@ -8,5 +8,5 @@
 import Foundation
 
 enum Domains: String {
-    case urlAPI    = "https://stage-api.cinepolis.com/"
+    case urlAPI    = "" // url deleted by customer request
 }
